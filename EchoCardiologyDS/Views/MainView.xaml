@@ -1,0 +1,856 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:EchoCardiologyDS.Views"
+        xmlns:EchoCardiologyDS="clr-namespace:EchoCardiologyDS" x:Class="EchoCardiologyDS.Views.MainView"
+        mc:Ignorable="d"          
+        WindowState="Maximized"
+        Title="CardeologyDS" Height="1500" Width="1400">
+    <Window.Resources>
+        <Style TargetType="{x:Type Control}" x:Key="baseStyle">
+            <Setter Property="Padding" Value="0 3" />
+        </Style>
+        <Style TargetType="{x:Type ComboBox}" x:Key="ComboBoxValue">
+            <Setter Property="SelectedIndex" Value="0"/>
+        </Style>
+        <Style TargetType="{x:Type ComboBox}" BasedOn="{StaticResource ComboBoxValue}"/>
+        <Style TargetType="{x:Type TextBox}" BasedOn="{StaticResource baseStyle}"/>
+    </Window.Resources>
+    <ScrollViewer>
+        <Grid Margin="5">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <ToolBar Grid.ColumnSpan="2">
+                <StackPanel Orientation="Horizontal">
+                    <Button Background="White" x:Name="CreateNewWindowButton" Padding="5"  Margin="3 3 5 3">
+                        <StackPanel Orientation="Horizontal">
+                            <Image Margin="0 0 2 0" Height="20" Source="/Resources/AddUser.png"/>
+                            <TextBlock>Новый пациент</TextBlock>
+                        </StackPanel>
+                    </Button>
+                    <Button Background="White" x:Name="SettingButton" Padding="5" Margin="3 3 5 3">
+                        <StackPanel Orientation="Horizontal">
+                            <Image  Margin="0 0 2 0" Height="20" Source="/Resources/setting.png"/>
+                            <TextBlock>Настройки</TextBlock>
+                        </StackPanel>
+                    </Button>
+                    <Button Background="White" x:Name="ConnectToDB" Padding="5" Margin="3 3 5 3">
+                        <StackPanel Orientation="Horizontal">
+                            <Image  Margin="0 0 2 0" Height="20" Source="/Resources/connectdatabase.png"/>
+                            <TextBlock>Подключиться к базе</TextBlock>
+                        </StackPanel>
+                    </Button>
+                    <Button Background="White" x:Name="PatientListButton"  Padding="5" Margin="3 3 5 3">
+                        <StackPanel Orientation="Horizontal">
+                            <Image  Margin="0 0 2 0" Height="20" Source="/Resources/patientsicon.png"/>
+                            <TextBlock>Пациенты</TextBlock>
+                        </StackPanel>
+                    </Button>
+                    <Button Visibility="Collapsed" Padding="5" Margin="3 3 5 3" Content="О нас"/>
+                </StackPanel>
+            </ToolBar>
+            <StackPanel Grid.Row="1" Grid.ColumnSpan="2">
+                <!--Начало-->
+                <StackPanel Margin="0 4 0 4" Orientation="Horizontal">
+                    <Label Content="Ф.И.О пациента"/>
+                    <TextBox x:Name="FIOtb"  Width="250"/>
+                    <Label Content="Пол"/>
+                    <RadioButton x:Name="JenderMRb"  Margin="5">
+                        <TextBlock><Run Text="M"/></TextBlock>
+                    </RadioButton>
+
+                    <RadioButton x:Name="JenderWRb" Margin="5">
+                        <TextBlock><Run Text="Ж"/></TextBlock>
+                    </RadioButton>
+                    <ComboBox DisplayMemberPath="Name" Width="100" Margin="5 0 5 0" x:Name="AgeComboBox" SelectedItem="{Binding SelectedChildAge}"></ComboBox>
+                    <Label Content="Масса тела"/>
+                    <TextBox x:Name="Weigthtb" Width="65"  />
+                    <Label Content="Рост"/>
+                    <TextBox x:Name="Heighttb"  Width="65" />
+                    <Label Content="BSA"/>
+                    <TextBox x:Name="BSAtb"  Width="75" Padding="3" />
+                    <Label>Дата рождения</Label>
+                    <TextBox Width="100" x:Name="BirthDay">
+                        
+                    </TextBox>
+                </StackPanel>
+                <!--Второая строка-->
+                <StackPanel Margin="0 0 0 4" Orientation="Horizontal">
+                    <Label Content="Направляющее отделение"/>
+                    <TextBox x:Name="DirectDepartment" Width="220" Padding="3"/>
+                    <Label Content="Oтделение(исследование)"/>
+                    <TextBox x:Name="ResearchName" Width="250" Text="Функциональная диагностика"/>
+                    <Label Content="N ИБ/Амбулаторной карты"/>
+                    <TextBox x:Name="CardNumber" Width="180"/>
+                </StackPanel>
+                <StackPanel Margin="0 0 0 4" Orientation="Horizontal">
+                    <Label Content="Дата и время исследования"/>
+                    <TextBox x:Name="TodayDate" IsEnabled="False" Width="120"/>
+                    <Label Content="Врач"/>
+                    <ComboBox SelectedItem="{Binding SelectedDoctor}" x:Name="DoctorComboBox"  Width="250"/>
+                    <Label Content="Цель исследования"/>
+                    <TextBox x:Name="ResearchAim" Width="420" />
+                </StackPanel>
+            </StackPanel>
+            <!--Grid ROW2-->
+            <StackPanel Grid.Row="2" Grid.ColumnSpan="2" Orientation="Vertical">
+                <StackPanel Margin="0 2 0 4" Orientation="Horizontal">
+                    <Label Content="Аппарат"/>
+                    <ComboBox  SelectedIndex="{Binding Path=ApparatIndex}" SelectedItem="{Binding SelectedApparat}" x:Name="ApparatComboBox" Width="185"/>
+                    <Label Content="Качество визуализации"/>
+                    <ComboBox SelectedIndex="{Binding Path=QualityIndex}" SelectedItem="{Binding SelectedVisualizationQuality}" x:Name="VisualizationQualityComboBox" Padding="3" Width="185"/>
+                    <Label Content="Экг ритм"/>
+                    <ComboBox SelectedIndex="{Binding Path=ECGIndex}" SelectedItem="{Binding SelectedECG}" x:Name="ECGComboBox" Margin="2 0 5 0"  Width="185"/>
+                    <TextBox x:Name="ECG1" Margin="2 0 5 0" Width="200"/>
+                    <TextBox x:Name="ECG2" Width="83"/>
+                </StackPanel>
+                <!--Первая строка-->
+                <StackPanel Margin="0 0 0 4" Orientation="Horizontal">
+                    <Label Content="Левое предсердие (ЛП)"/>
+                    <TextBox x:Name="LeftAtrium" Width="80"/>
+                    <Label Content="Правый желудочек"/>
+                    <ComboBox SelectedIndex="{Binding Path=RightStomachIndex}" SelectedItem="{Binding SelectedRigthStomach}" x:Name="RigthStomachComboBox" Margin="0 0 5 0" Padding="3" Width="120"/>
+                    <TextBox x:Name="RightStomach" Margin="0 0 5 0" Padding="3" Width="80"/>
+                    <TextBlock TextWrapping="Wrap" Width="150"><Run Text="Толщина нижне-боковой стенки левого желудочка"/></TextBlock>
+                    <TextBox x:Name="ThicknessLowerWallLeftStomach" Width="80"/>
+                    <TextBlock   Margin="5 0 0 0" TextWrapping="Wrap" Width="250"><Run Text="Относительная толщина стенки левого желудочка"/></TextBlock>
+                    <TextBox x:Name="RelativeThicknessLeftStomach" Width="75"/>
+                </StackPanel>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions >
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition  Width="*"/>
+                        <ColumnDefinition  Width="*"/>
+                        <ColumnDefinition  Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <GroupBox Header="Аорта">
+                        <StackPanel>
+                            <DockPanel Margin="0 2 0 2">
+                                <Label Content="Фиброзное кольцо"/>
+                                <TextBox x:Name="Circle" Padding="3" Width="80" HorizontalAlignment="Right"/>
+                            </DockPanel>
+                            <DockPanel Margin="0 2 0 2">
+                                <Label Content="Синусы Вальсальвы"/>
+                                <TextBox x:Name="SinusValsav" Width="80" HorizontalAlignment="Right"/>
+                            </DockPanel>
+                            <DockPanel Margin="0 2 0 2">
+                                <Label Content="Синотубулярный контакт"/>
+                                <TextBox x:Name="SinobulyarContact" Padding="3"  Width="80" HorizontalAlignment="Right"/>
+                            </DockPanel>
+                            <DockPanel Margin="0 2 0 2">
+                                <Label Content="Восходящий отдел"/>
+                                <TextBox x:Name="AriseDepartament"  Width="80" HorizontalAlignment="Right"/>
+                            </DockPanel>
+                            <DockPanel Margin="0 2 0 2">
+                                <Label Content="Дуга"/>
+                                <TextBox x:Name="Arc" Width="80" HorizontalAlignment="Right"/>
+                            </DockPanel>
+                            <DockPanel Margin="0 2 0 2">
+                                <Label Content="Нисходящий отдел"/>
+                                <TextBox x:Name="AortaDepartament" Width="80" HorizontalAlignment="Right"/>
+                            </DockPanel>
+                        </StackPanel>
+                    </GroupBox>
+                    
+                    <StackPanel Grid.Column="1">
+                        <DockPanel Margin="0 2 0 2">
+                            <TextBlock><Run Text="Толщина стенки правого желудочка"/></TextBlock>
+                            <TextBox x:Name="ThicknessWallRightStomach" Height="25" Width="80" HorizontalAlignment="Right"/>
+                        </DockPanel>
+                        <DockPanel Margin="0 2 0 2">
+                            <TextBlock Width="210" TextWrapping="Wrap"><Run Text="Толщина межжелудочковой перегородки(МЖП)"/></TextBlock>
+                            <TextBox x:Name="ThicknessMejPereMJP" Height="25" Width="80" HorizontalAlignment="Right"/>
+                        </DockPanel>
+                        <DockPanel Margin="0 2 0 2">
+                            <TextBlock><Run Text="Толщина базального сегмента МЖП"/></TextBlock>
+                            <TextBox x:Name="ThicknessBazalSegment" Height="25" Width="80" HorizontalAlignment="Right"/>
+                        </DockPanel>
+                        <DockPanel Margin="0 2 0 2">
+                            <TextBlock  Width="90" TextWrapping="Wrap"><Run Text="Тип утолщения миокарда"/></TextBlock>
+                            <ComboBox SelectedIndex="{Binding Path=MiokardIndex}" SelectedItem="{Binding SelectedMiokard}" x:Name="MiokardComboBox" Width="130" HorizontalAlignment="Right"/>
+                            <TextBox x:Name="TypeThicknessMiokard" Height="25" Width="80" HorizontalAlignment="Right"/>
+                        </DockPanel>
+                        <DockPanel Margin="0 2 0 2">
+                            <TextBlock><Run Text="Эхогенность миокарда"/></TextBlock>
+                            <ComboBox SelectedIndex="{Binding Path=EchoMiokardIndex}" SelectedItem="{Binding SelectedEchoMiokard}" Width="150" x:Name="EchoMiokardComboBox" HorizontalAlignment="Right"/>
+                        </DockPanel>
+                        <DockPanel Margin="0 2 0 2">
+                            <TextBlock ><Run Text="Толщина МЖП в систолу"/></TextBlock>
+                            <TextBox x:Name="ThicknessMJPSislotu" Height="25" Width="80" HorizontalAlignment="Right"/>
+                        </DockPanel>
+                        <DockPanel Margin="0 2 0 2">
+                            <TextBlock><Run Text="Амплитуда движения МЖП"/></TextBlock>
+                            <TextBox x:Name="AmplitudeMovementMJP" Height="25" Width="80" HorizontalAlignment="Right"/>
+                        </DockPanel>
+                    </StackPanel>
+                    <StackPanel Grid.Column="2" Margin="0 0 5 0">
+                        <DockPanel Margin="0 2 0 2">
+                            <TextBlock Margin="4 0 0 0" TextWrapping="Wrap" Width="200"><Run Text="Толщина нижне-боковой стенки левого желудочка в систолу"/></TextBlock>
+                            <TextBox x:Name="ThicknessLowerWallLeftStomachSislotu" Height="25" Width="{Binding ActualWidht, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type DockPanel}}}"/>
+                        </DockPanel>
+                        <DockPanel Margin="0 2 0 2">
+                            <TextBlock  Margin="4 0 0 0" TextWrapping="Wrap" Width="200"><Run Text="Амплитуда движения нижне-боковой стенки ЛЖ"/></TextBlock>
+                            <TextBox x:Name="AmplitudeMovementLowerWall" Height="25" Width="{Binding ActualWidht, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type DockPanel}}}"/>
+                        </DockPanel>
+                        <DockPanel Margin="0 2 0 2">
+                            <TextBlock Margin="4 0 0 0" TextWrapping="Wrap" Width="200"><Run Text="Конечно-систолический размер левого желудочка(КСР)"/></TextBlock>
+                            <TextBox x:Name="LastSislotSizeLeftStomach" Height="25" Width="{Binding ActualWidht, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type DockPanel}}}"/>
+                        </DockPanel>
+                        <DockPanel Margin="0 2 0 2">
+                            <TextBlock Margin="4 0 0 0" Width="200"><Run Text="Фракция ускорения (ФУ)"/></TextBlock>
+                            <TextBox x:Name="FractionAcceleration" Width="{Binding ActualWidht, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type DockPanel}}}"/>
+                        </DockPanel>
+                    </StackPanel>
+                    <StackPanel Grid.Column="3">
+                        <DockPanel Margin="0 2 0 2">
+                            <TextBlock  Width="220" Margin="4 0 0 0"><Run Text="Движение МЖП"/></TextBlock>
+                            <ComboBox SelectedIndex="{Binding Path=MovementIndex}" SelectedItem="{Binding SelectedMovement}" x:Name="MovementComboBox" Height="25" Width="{Binding ActualWidht, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type DockPanel}}}"/>
+                        </DockPanel>
+                        <DockPanel Margin="0 2 0 2">
+                            <TextBlock  TextWrapping="Wrap" Width="220" Margin="4 0 0 0"><Run Text="Скорость на клапоне легочной (ЛК) артерии"/></TextBlock>
+                            <TextBox x:Name="VelocityVavlvePulmonaryArtery" Height="25" Width="{Binding ActualWidht, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type DockPanel}}}"/>
+                        </DockPanel>
+                        <DockPanel Margin="0 2 0 2">
+                            <TextBlock Margin="4 0 0 0" Width="220" TextWrapping="Wrap"><Run Text="Максимальный градиент давления на клапане легоной артерии"/></TextBlock>
+                            <TextBox x:Name="MaxGradientPressurePulmonaryArtery" Height="25" Width="{Binding ActualWidht, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type DockPanel}}}"/>
+                        </DockPanel>
+                        <DockPanel Margin="0 2 0 2">
+                            <TextBlock  Margin="4 0 0 0" Width="220" TextWrapping="Wrap"><Run Text="Расчет индекса массы МЖ"/></TextBlock>
+                            <ComboBox SelectedIndex="{Binding Path=EvaluateIndex}" SelectedItem="{Binding SelectedEvaluateIndex}" x:Name="EvaluateIndexComboBox" Height="30" Width="{Binding ActualWidht, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type DockPanel}}}"/>
+                        </DockPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <CheckBox Margin="0 4 0 0" Content="Амилоидоз"/>
+                        </StackPanel>
+                    </StackPanel>
+                    <StackPanel Grid.Row="1">
+                        <DockPanel Margin="0 2 0 2">
+                            <TextBlock Margin="2 2 0 0"><Run Text="Раскрытие аортального клапана"/></TextBlock>
+                            <TextBox x:Name="OpenAorthValve" Margin="0 2 5 0" Height="25" Width="80" HorizontalAlignment="Right"/>
+                        </DockPanel>
+                    </StackPanel>
+                    <StackPanel Grid.Row="1" Grid.Column="1">
+                        <DockPanel Margin="0 2 0 2">
+                            <TextBlock  Width="200" TextWrapping="Wrap"><Run Text="Конечно диастолический размер левого желудочка(КДР)"/></TextBlock>
+                            <TextBox x:Name="LastDiastolSizeLeftStomach"  Height="25" Width="80" HorizontalAlignment="Right"/>
+                        </DockPanel>
+                    </StackPanel>
+                </Grid>
+
+            </StackPanel>
+            <StackPanel Grid.Row="3" Grid.Column="0">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <CheckBox IsChecked="{Binding LeftStomachChecked}" Grid.ColumnSpan="2" Grid.Row="0" Margin="5 0 0 4" Content="Оценка диастолической функции левого желудочка"/>
+                    <StackPanel Grid.ColumnSpan="2" Grid.Row="1" Margin="0 0 0 4" Orientation="Horizontal">
+                        <Label Content="Ск. на МК"/>
+                        <Label Content="Пик Е"/>
+                        <TextBox x:Name="LSPickE" Width="65"/>
+                        <StackPanel Orientation="Horizontal" Visibility="{Binding LeftStomachVisibility}">
+                            <Label Content="Пик A"/>
+                            <TextBox x:Name="LSPickA" Width="65"/>
+                            <Label Content="E/A"/>
+                            <TextBox x:Name="LSEA" Width="65"/>
+                            <Label Content="e's"/>
+                            <TextBox x:Name="LSES" Width="65"/>
+                            <Label Content="e'l"/>
+                            <TextBox x:Name="LSEL" Width="65"/>
+                            <Label Content="E/e'"/>
+                            <TextBox x:Name="LSEE" Width="65"/>
+                        </StackPanel>
+                    </StackPanel>
+                    <StackPanel Visibility="{Binding LeftStomachVisibility}" Grid.ColumnSpan="2" Grid.Row="2" Margin="0 0 0 4" Orientation="Horizontal">
+                        <Label HorizontalAlignment="Center" VerticalAlignment="Center" Content="DT"/>
+                        <TextBox x:Name="LSDT" Width="75" Height="25"/>
+                        <Label HorizontalAlignment="Center" VerticalAlignment="Center" Content="IVRS"/>
+                        <TextBox x:Name="LSIVRS" Width="75" Height="25"/>
+                        <GroupBox Margin="25 0 0 0" Header="Кровоток в легочный венах" Width="428">
+                            <StackPanel Orientation="Horizontal">
+                                <Label Content="S"/>
+                                <TextBox x:Name="LSS" Width="80"/>
+                                <Label Content="D"/>
+                                <TextBox x:Name="LSD" Width="80"/>
+                                <Label Content="S/D"/>
+                                <TextBox x:Name="LSSD" Width="80"/>
+                                <Label Content="Z"/>
+                                <TextBox x:Name="LSZ" Width="80"/>
+                            </StackPanel>
+                        </GroupBox>
+                    </StackPanel>
+                    <DockPanel  Grid.Row="3">
+                        <TextBlock Margin="5 0 0 0" TextWrapping="Wrap" Width="160"><Run Text="Максимальный градиент на митральном клапане"/></TextBlock>
+                        <TextBox x:Name="LSMaxGradientMitralValve" HorizontalAlignment="Right" Width="80"/>
+
+                    </DockPanel>
+                    <DockPanel Grid.Row="3" Grid.Column="2">
+                        <TextBlock Margin="5 0 0 0" HorizontalAlignment="Right" TextWrapping="Wrap" Width="160"><Run Text="Средний градиент на митральном клапане"/></TextBlock>
+                        <TextBox x:Name="LSAverageGradientMitralValve" Width="{Binding ActualWidht, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type DockPanel}}}"/>
+                    </DockPanel>
+                    <CheckBox IsChecked="{Binding RightFunctionChecked}" Margin="5 5 0 4" Grid.Row="4" Content="Оценка диастолической функции правого желудочка"/>
+                    <StackPanel Grid.Row="5" Grid.ColumnSpan="2" Orientation="Horizontal">
+                        <Label Content="Ск. на ТК"/>
+                        <Label Content="Пик Е"/>
+                        <TextBox x:Name="RSFPickE" Width="65"/>
+                        <StackPanel Visibility="{Binding RightFunctionVisibility}" Orientation="Horizontal">
+                            <Label Content="Пик A"/>
+                            <TextBox x:Name="RSFPickA" Width="65"/>
+                            <Label Content="E/A"/>
+                            <TextBox x:Name="RSFPickEA" Width="65"/>
+                            <Label Content="DT"/>
+                            <TextBox x:Name="RSFPickDT" Width="65"/>
+                            <Label Content="e'l"/>
+                            <TextBox x:Name="RSFPickEL" Width="65"/>
+                            <Label Content="E/e'l"/>
+                            <TextBox x:Name="RSFPickEEL" Width="65"/>
+                        </StackPanel>
+                    </StackPanel>
+                    <DockPanel Grid.Row="6" Margin="0 5 0 2">
+                        <TextBlock Margin="5 0 0 5" TextWrapping="Wrap" Width="140"><Run Text="Максимальный градиент на трикуспидальном клапане"/></TextBlock>
+                        <TextBox x:Name="RSFPMaxGradientTricuspidil" Width="{Binding ActualWidht, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type DockPanel}}}" Padding="0 15" />
+                    </DockPanel>
+                    <DockPanel Margin="0 5 0 2" Grid.Row="6" Grid.Column="2">
+                        <TextBlock  Margin="5 0 0 5" TextWrapping="Wrap" Width="180"><Run Text="Средний градиент давления на трикуспидальном клапане"/></TextBlock>
+                        <TextBox x:Name="RSFPAverageGradientPressureTrucuspidil" Width="{Binding ActualWidht, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type DockPanel}}}" Padding="0 7" />
+                    </DockPanel>
+                    <DockPanel Margin="0 5 0 2" Grid.Row="7">
+                        <TextBlock Margin="5 0 0 5" TextWrapping="Wrap" Width="140"><Run Text="Скорость в выходном тракте левого желудочка"/></TextBlock>
+                        <TextBox x:Name="RSFPVelocityLeftStomach" Width="{Binding ActualWidht, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type DockPanel}}}" Padding="0 15" />
+                    </DockPanel>
+                    <DockPanel Margin="0 5 0 2" Grid.Row="7" Grid.Column="2">
+                        <TextBlock Margin="5 0 0 5" TextWrapping="Wrap" Width="180"><Run Text="Максимальный градиент в выходном тракте левого желудочка"/></TextBlock>
+                        <TextBox x:Name="RSFPMaxGradientLeftStomach" Width="{Binding ActualWidht, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type DockPanel}}}" Padding="0 15" />
+                    </DockPanel>
+                    <DockPanel Margin="0 5 0 2" Grid.Row="8">
+                        <TextBlock Margin="5 0 0 5" TextWrapping="Wrap" Width="140"><Run Text="Скорость на аортальном клапане"/></TextBlock>
+                        <TextBox x:Name="RSFPVelocityAortValve" Width="{Binding ActualWidht, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type DockPanel}}}" Padding="0 7" />
+                    </DockPanel>
+                    <DockPanel Margin="0 5 0 2" Grid.Row="8" Grid.Column="2">
+                        <TextBlock Margin="5 0 0 5" TextWrapping="Wrap" Width="180"><Run Text="Максимальный градиент на аортальном клапане"/></TextBlock>
+                        <TextBox x:Name="RSFPMaxGradientAortValue" Width="{Binding ActualWidht, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type DockPanel}}}" Padding="7"/>
+                    </DockPanel>
+                    <DockPanel Margin="0 5 0 2" Grid.Row="9">
+                        <TextBlock  Margin="5 0 0 5" TextWrapping="Wrap" Width="140"><Run Text="Средний градиент на аортальном клапане"/></TextBlock>
+                        <TextBox x:Name="RSFPAverageGradientAortValue" Width="{Binding ActualWidht, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type DockPanel}}}" Padding="7" />
+                    </DockPanel>
+                    <DockPanel Margin="0 5 0 2" Grid.Row="9" Grid.Column="2">
+                        <TextBlock Width="180" Margin="5 0 0 5" TextWrapping="Wrap" ><Run Text="Конечно-диастолический объем ЛЖ"/></TextBlock>
+                        <TextBox x:Name="RSFPLastVolumeLJ" Width="{Binding ActualWidht, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type DockPanel}}}" Padding="7"/>
+                    </DockPanel>
+                    <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" Grid.ColumnSpan="2" Grid.Row="10">
+                    <StackPanel Margin="0 4 0 4" Orientation="Horizontal">
+                        <Label Content="ФВ"/>
+                        <TextBox x:Name="RSFPFV" Width="65"/>
+                        <Label Content="%"/>
+                        <ComboBox SelectedIndex="{Binding Path=FVIndex}" SelectedItem="{Binding SelectedFV}" Width="200" x:Name="FVComboBox"/>
+                        <Label Content="КСО"/>
+                        <TextBox x:Name="RSFPKSO" Width="55"/>
+                        <Label Content="УОК"/>
+                        <TextBox x:Name="RSFPUOK" Width="55"/>
+                        <Label Content="MOK"/>
+                        <TextBox x:Name="RSFPMOK" Width="55"/>
+                        <Label Content="GLS"/>
+                        <TextBox x:Name="RSFPKSOGLS" Width="55"/>
+                        <Label Content="dp/dt"/>
+                        <TextBox x:Name="RSFPdpdt" Width="55"/>
+                    </StackPanel>
+                    </ScrollViewer>
+                    <DockPanel Margin="0 5 0 2" Grid.Row="11">
+                        <TextBlock Margin="5 0 0 5" TextWrapping="Wrap" Width="140"><Run Text="Максимальный объем левого предсердия(ЛП)"/></TextBlock>
+                        <TextBox x:Name="RSFPMaxValomeLeftAtrium" Width="{Binding ActualWidht, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type DockPanel}}}" Padding="0 7"/>
+                    </DockPanel>
+                    <DockPanel Margin="0 5 0 2" Grid.Row="11" Grid.Column="2">
+                        <TextBlock Margin="5 0 0 5" TextWrapping="Wrap" Width="180"><Run Text="Максимальный объем правого предсердия(ПП)"/></TextBlock>
+                        <TextBox x:Name="RSFPMaxValomeRightAtrium" Width="{Binding ActualWidht, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type DockPanel}}}" Padding="0 7"/>
+                    </DockPanel>
+                    <DockPanel Margin="0 5 0 2" Grid.Row="12" >
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto"/>
+                                <ColumnDefinition Width="55*"/>
+                                <ColumnDefinition Width="auto" />
+                                <ColumnDefinition Width="55*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Width="140" Grid.Column="0" Margin="5 0 5 5" TextWrapping="Wrap" ><Run Text="Размер ЛЖ : длина,ширина"/></TextBlock>
+                            <TextBox x:Name="RSFPLengthLJ"  Grid.Column="1" />
+                            <TextBlock VerticalAlignment="Center" Grid.Column="2"  Margin="3,0,3,0"><Run Text="х"/></TextBlock>
+                            <TextBox x:Name="RSFPWidthLJ" Grid.Column="3" />
+                        </Grid>
+
+                    </DockPanel>
+                    <DockPanel Margin="0 5 0 2" Grid.Row="12" Grid.Column="2">
+                        <Label Width="180" Margin="5 0 0 5" Content="Площадь правого предсердия"/>
+                        <TextBox x:Name="RSFPSquareRigthAtrium" Width="{Binding ActualWidht, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type DockPanel}}}" Padding="0 7"/>
+                    </DockPanel>
+                    <DockPanel Margin="0 5 0 2"  Grid.Row="13">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto"/>
+                                <ColumnDefinition Width="55*"/>
+                                <ColumnDefinition Width="auto" />
+                                <ColumnDefinition Width="55*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock  Width="140" Grid.Column="0" Margin="5 0 5 5" TextWrapping="Wrap" ><Run Text="Размер ЛП : длина , ширина"/></TextBlock>
+                            <TextBox x:Name="RSFPLengthLp"  Grid.Column="1"/>
+                            <TextBlock VerticalAlignment="Center" Grid.Column="2"  Margin="3,0,3,0"><Run Text="х"/></TextBlock>
+                            <TextBox  x:Name="RSFPWidthLp" Grid.Column="3" />
+                        </Grid>
+                    </DockPanel>
+                    <DockPanel  Margin="0 5 0 2" Grid.Row="13" Grid.Column="2">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto"/>
+                                <ColumnDefinition Width="55*"/>
+                                <ColumnDefinition Width="auto" />
+                                <ColumnDefinition Width="55*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Margin="5 0 5 0"  TextWrapping="Wrap" Width="150"><Run Text="Размер ПЖ : длина,ширина"/></TextBlock>
+                            <TextBox x:Name="RSFPLengthPj" Grid.Column="1" />
+                            <TextBlock VerticalAlignment="Center" Grid.Column="2"  Margin="3,0,3,0"><Run Text="х"/></TextBlock>
+                            <TextBox x:Name="RSFPWidthPJ" Grid.Column="3" />
+                        </Grid>
+                    </DockPanel>
+                    <DockPanel Margin="0 5 0 2" Grid.Row="14" Grid.Column="2">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto"/>
+                                <ColumnDefinition Width="55*"/>
+                                <ColumnDefinition Width="auto" />
+                                <ColumnDefinition Width="55*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Margin="5 0 5 5" TextWrapping="Wrap" Width="150"><Run Text="Размер ПП : длина,ширина"/></TextBlock>
+                            <TextBox x:Name="RSFPLengthPP" Grid.Column="1" />
+                            <TextBlock VerticalAlignment="Center" Grid.Column="2"  Margin="3,0,3,0"><Run Text="х"/></TextBlock>
+                            <TextBox x:Name="RSFPWidthPP" Grid.Column="3"/>
+                        </Grid>
+                    </DockPanel>
+                    <CheckBox IsChecked="{Binding RightChecked}" Margin="5 5 0 8" Grid.ColumnSpan="2" Grid.Row="15" Content="Оценка правого желудочка"/>
+                    <DockPanel Visibility="{Binding RightVisibility}" Margin="0 2 0 2" Grid.Row="16" >
+                        <Label Width="150" Content="Базальный d ПЖ"/>
+                        <TextBox x:Name="RABazal" Width="{Binding ActualWidht, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type DockPanel}}}" />
+                    </DockPanel>
+                    <DockPanel Visibility="{Binding RightVisibility}" Margin="0 2 0 2" Grid.Row="16"  Grid.Column="2">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto"/>
+                                <ColumnDefinition Width="55*"/>
+                                <ColumnDefinition Width="auto" />
+                                <ColumnDefinition Width="55*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Width="150" Content="Проксимальный d ВТПЖ"/>
+                            <TextBox x:Name="RAProksiVTPJ" Grid.Column="1" />
+                            <Label Grid.Column="2" Content="s'"/>
+                            <TextBox x:Name="RAS" Grid.Column="3" />
+                        </Grid>
+                    </DockPanel>
+                    <DockPanel Visibility="{Binding RightVisibility}" Margin="0 2 0 2" Grid.Row="17">
+                        <Label Width="150" Content="Максимильный d ПЖ"/>
+                        <TextBox x:Name="RAMaxdPJ" Width="{Binding ActualWidht, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type DockPanel}}}"/>
+                    </DockPanel>
+                    <DockPanel Visibility="{Binding RightVisibility}" Margin="0 2 0 2" Grid.Row="17" Grid.Column="2">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto"/>
+                                <ColumnDefinition Width="55*"/>
+                                <ColumnDefinition Width="auto" />
+                                <ColumnDefinition Width="55*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Width="150" Content="Дистальный d ВТПЖ"/>
+                            <TextBox x:Name="RADistalVTPJ" Grid.Column="1"/>
+                            <Label Grid.Column="2" Content="Fac"/>
+                            <TextBox x:Name="RAFac" Grid.Column="3" />
+                        </Grid>
+                    </DockPanel>
+                    <DockPanel Visibility="{Binding RightVisibility}" Margin="0 2 0 2" Grid.Row="18" >
+                        <Label Width="150" Content="Движ. ФК ТК (TAPSE)"/>
+                        <TextBox x:Name="RAActionFKTK" Width="{Binding ActualWidht, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type DockPanel}}}"/>
+                    </DockPanel>
+                    <DockPanel Visibility="{Binding RightVisibility}" Margin="0 2 0 2" Grid.Row="18" Grid.Column="2">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto"/>
+                                <ColumnDefinition Width="55*"/>
+                                <ColumnDefinition Width="auto" />
+                                <ColumnDefinition Width="55*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Width="150" Content="Ширина ствола ЛА"/>
+                            <TextBox x:Name="RAWidthLa" Grid.Column="1" />
+                            <Label Grid.Column="2" Content="GLS"/>
+                            <TextBox x:Name="RAGLS" Grid.Column="3" />
+                        </Grid>
+                    </DockPanel>
+                    <DockPanel Visibility="{Binding RightVisibility}" Margin="0 2 0 2" Grid.Row="19">
+                        <Label Width="150" Content="Ширина НПВ"/>
+                        <TextBox x:Name="RAWidth" Width="{Binding ActualWidht, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type DockPanel}}}"/>
+                    </DockPanel>
+                    <DockPanel Visibility="{Binding RightVisibility}" Margin="0 2 0 2" Grid.Row="19" Grid.Column="2">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto"/>
+                                <ColumnDefinition Width="55*"/>
+                                <ColumnDefinition Width="auto" />
+                                <ColumnDefinition Width="55*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Width="150" Content="Правая ветвь ЛА"/>
+                            <TextBox x:Name="RARigthLA" Grid.Column="1" />
+                            <Label Grid.Column="2" Content="dp/dt"/>
+                            <TextBox x:Name="RAdpdt" Grid.Column="3"/>
+                        </Grid>
+                    </DockPanel>
+                    <DockPanel Visibility="{Binding RightVisibility}" Margin="0 2 0 2" Grid.Row="20">
+                        <Label Width="150" Content="Коллабирование"/>
+                        <ComboBox SelectedIndex="{Binding Path=CollIndex}" SelectedItem="{Binding SelectedColl}" Width="130" x:Name="CollComboBox" HorizontalAlignment="Right"/>
+                    </DockPanel>
+                    <DockPanel Margin="0 2 0 2" Grid.Row="21" >
+                        <TextBlock Margin="5 0 0 0" TextWrapping="Wrap" Width="144"><Run Text="Макс градиент трикуспидальной регургитации"/></TextBlock>
+                        <TextBox x:Name="RAMaxGradientTricuspidil" Width="{Binding ActualWidht, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type DockPanel}}}"/>
+                    </DockPanel>
+                    <DockPanel Margin="0 2 0 2" Grid.Row="22" >
+                        <Label Width="150" Content="Давление в ПП"/>
+                        <TextBox x:Name="RAPressurePP" Width="{Binding ActualWidht, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type DockPanel}}}"/>
+                    </DockPanel>
+                    <DockPanel Margin="0 2 0 2" Grid.Row="23" >
+                        <TextBlock Margin="5 0 0 0" TextWrapping="Wrap" Width="144"><Run Text="Систолическое давление в ЛА"/></TextBlock>
+                        <TextBox x:Name="RASistolPressureLA" Width="{Binding ActualWidht, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type DockPanel}}}"/>
+                    </DockPanel>
+                    <DockPanel Margin="0 2 0 2" Grid.Row="21" Grid.Column="2">
+                        <Label Width="150" Content="Ср. ДЛА"/>
+                        <TextBox  x:Name="RAAverageDLA" Width="{Binding ActualWidht, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type DockPanel}}}"/>
+                    </DockPanel>
+                    <DockPanel Margin="0 2 0 2" Grid.Row="22" Grid.Column="2">
+                        <Label Width="150" Content="ДДЛА"/>
+                        <TextBox x:Name="RADDLA" Width="{Binding ActualWidht, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type DockPanel}}}"/>
+                    </DockPanel>
+                    <DockPanel Margin="0 2 0 2" Grid.Row="23" Grid.Column="2">
+                        <Label Width="150" Content="ДЗЛК"/>
+                        <TextBox x:Name="RADZLK" Width="{Binding ActualWidht, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type DockPanel}}}"/>
+                    </DockPanel>
+                </Grid>
+            </StackPanel>
+            <StackPanel Grid.Row="4" Grid.Column="1">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <GroupBox Header="Степень регургитации на">
+                        <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+                            <StackPanel Orientation="Horizontal">
+                                <Label Content="МК"/>
+                                <ComboBox SelectedIndex="{Binding Path=MKIndex}" SelectedItem="{Binding SelectedMK}" x:Name="MKLevel"/>
+                                <Label Content="ТК"/>
+                                <ComboBox SelectedIndex="{Binding Path=TKIndex}" SelectedItem="{Binding SelectedTK}" x:Name="TKLevel"/>
+                                <Label Content="АК"/>
+                                <ComboBox SelectedIndex="{Binding Path=AKIndex}" SelectedItem="{Binding SelectedAK}"  x:Name="AKLevel"/>
+                                <Label Content="ЛК"/>
+                                <ComboBox SelectedIndex="{Binding Path=LKIndex}" SelectedItem="{Binding SelectedLK}"  x:Name="LKLevel"/>
+                            </StackPanel>
+                        </ScrollViewer>
+                    </GroupBox>
+                    <TabControl Grid.Row="1">
+                        <TabItem Header="Митральный клапан(МК)">
+                            <StackPanel>
+                                <ScrollViewer>
+                                    <TextBox x:Name="MVComment" Height="100" TextWrapping="Wrap" AcceptsReturn="True"/>
+                                </ScrollViewer>
+                                <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+                                <StackPanel  >
+                                    <StackPanel Margin="0 2 2 4" Orientation="Horizontal">
+                                        <Label Margin="0 0 5 0" Content="Площадь"/>
+                                        <TextBlock Width="50" TextWrapping="Wrap"><Run Text="Планим. методом"/></TextBlock>
+                                        <TextBox x:Name="MVMethod" Width="55"/>
+                                        <Label Content="По транс-му потоку"/>
+                                        <TextBox x:Name="MVFlow" Width="55"/>
+                                    </StackPanel>
+                                    <WrapPanel Margin="0 5 0 0" Orientation="Horizontal">
+                                        <Label  Margin="1 2 1 1" Content="PISA"/>
+                                        <TextBox x:Name="MVPISA" Margin="1 2 1 1" Width="55"/>
+                                        <Label  Margin="1 2 1 1" Content="Vena contracta"/>
+                                        <TextBox x:Name="MVVenaContracta"  Margin="1 2 1 1" Width="55"/>
+                                        <Label  Margin="1 2 1 1" Content="ФК"/>
+                                        <TextBox x:Name="VMFK"  Margin="1 2 1 1" Width="55"/>
+                                        <Label  Margin="1 2 1 1" Content="EROA"/>
+                                        <TextBox x:Name="MVEROA" Margin="1 2 1 1" Width="55"/>
+                                    </WrapPanel>
+                            </StackPanel>
+                                </ScrollViewer>
+
+                            </StackPanel>
+                        </TabItem>
+                        <TabItem Header="Аортальный клапан(АК)">
+                            <StackPanel>
+                                <ScrollViewer>
+                                    <TextBox x:Name="AVComment" TextWrapping="Wrap" Height="100" AcceptsReturn="True"/>
+                                </ScrollViewer>
+                                <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto"> 
+                                <StackPanel >
+                                    <StackPanel Orientation="Horizontal">
+                                        <Label  Margin="1 2 1 1" Content="Площадь"/>
+                                        <TextBlock  Margin="1 2 1 1" Width="50" TextWrapping="Wrap"><Run Text="Планим. методом"/></TextBlock>
+                                        <TextBox x:Name="AVMethod" Margin="1 2 1 1" Width="55"/>
+                                        <Label  Margin="1 2 1 1" Content="по ур-ию непр. пот."/>
+                                        <TextBox x:Name="AVFlow" Margin="1 2 1 1" Width="55"/>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Label  Margin="1 2 1 1" Content="PHT регургитации на АК"/>
+                                        <TextBox x:Name="AVPHT" Margin="1 2 1 1" Width="55"/>
+                                        <Label  Margin="1 2 1 1" Content="Vena contaracta"/>
+                                        <TextBox x:Name="AVVenaContaracta" Margin="1 2 1 1" Width="55"/>
+                                    </StackPanel>
+                                </StackPanel>
+                                </ScrollViewer>
+                            </StackPanel>
+                        </TabItem>
+                        <TabItem Header="Трикуспидальный клапан(ТК)">
+                            <StackPanel>
+                                <ScrollViewer>
+                                    <TextBox x:Name="TVComment" Height="100" TextWrapping="Wrap" AcceptsReturn="True"/>
+                                </ScrollViewer>
+                                <StackPanel >
+                                    <StackPanel Orientation="Horizontal">
+                                        <Label  Margin="1 2 1 1" Content="PISA"/>
+                                        <TextBox x:Name="TVPisa" Margin="1 2 1 1" Width="55"/>
+                                        <Label  Margin="1 2 1 1" Content="Vena contracta"/>
+                                        <TextBox x:Name="TVVenaContracta" Margin="1 2 1 1" Width="55"/>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Label  Margin="1 2 1 1" Content="ФК"/>
+                                        <TextBox x:Name="TVFk" Margin="1 2 1 1" Width="55"/>
+                                        <Label  Margin="1 2 1 1" Content="EROA"/>
+                                        <TextBox x:Name="TVEroa" Margin="1 2 1 1" Width="55"/>
+                                        <Label  Margin="1 2 1 1" Content="Rvol"/>
+                                        <TextBox x:Name="TVRvol" Margin="1 2 1 1" Width="55"/>
+                                    </StackPanel>
+                                </StackPanel>
+                            </StackPanel>
+                        </TabItem>
+                        <TabItem Header="МК МР">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="3*"/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+                                <StackPanel>
+                                    <DockPanel Margin="0 2 0 5">
+                                        <Label Width="200" Content="Стептально боковой размер ФК"/>
+                                        <TextBox x:Name="MKSideSizeFK" Width="{Binding ActualWidht, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type DockPanel}}}"/>
+                                    </DockPanel>
+                                    <DockPanel Margin="0 2 0 5">
+                                        <Label Width="200" Content="Межкомиссуральный размер ФК"/>
+                                        <TextBox x:Name="MKIntercommissioningSizeFK" Width="{Binding ActualWidht, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type DockPanel}}}"/>
+                                    </DockPanel>
+                                    <DockPanel Margin="0 2 0 5">
+                                        <Label Width="200" Content="Межпапиллярное расст. в диастолу"/>
+                                        <TextBox x:Name="MKLengthDiastol" Width="{Binding ActualWidht, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type DockPanel}}}"/>
+                                    </DockPanel>
+                                    <DockPanel Margin="0 2 0 5">
+                                        <Label Width="200" Content="Межпапиллярное расст. в систолу"/>
+                                        <TextBox  x:Name="MKLengthSistol" Width="{Binding ActualWidht, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type DockPanel}}}"/>
+                                    </DockPanel>
+                                    <DockPanel Margin="0 2 0 5">
+                                        <Label Width="200" Content="Расстояние от головки ЗМПМ до ФК"/>
+                                        <TextBox x:Name="MKHeadZMPM" Width="{Binding ActualWidht, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type DockPanel}}}"/>
+                                    </DockPanel>
+                                </StackPanel>
+                                <StackPanel Grid.Column="1">
+                                    <Label Content="Коаптация"/>
+                                    <DockPanel >
+                                        <Label Width="50" Content="Глуб."/>
+                                        <TextBox x:Name="MKDepth" Width="{Binding ActualWidht, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type DockPanel}}}"/>
+                                    </DockPanel>
+                                    <DockPanel >
+                                        <Label Width="50" Content="Прот."/>
+                                        <TextBox x:Name="MKProt" Width="{Binding ActualWidht, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type DockPanel}}}"/>
+                                    </DockPanel>
+                                    <DockPanel >
+                                        <Label Width="50" Content="C-sept"/>
+                                        <TextBox x:Name="MKCSept" Width="{Binding ActualWidht, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type DockPanel}}}"/>
+                                    </DockPanel>
+                                </StackPanel>
+                                <StackPanel Grid.ColumnSpan="2" Grid.Row="2">
+                                    <ScrollViewer  HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+                                        <StackPanel Margin="0 5 0 5" Orientation="Horizontal">
+                                            <Label Content="S тенинга"/>
+                                            <TextBox x:Name="MKSTening" Width="60"/>
+                                            <Label Content="Rvol"/>
+                                            <TextBox x:Name="MKRvol" Width="60"/>
+                                            <Label Content="RF"/>
+                                            <TextBox x:Name="MKRF" Width="62"/>
+                                            <Label Content="Fl gap"/>
+                                            <TextBox x:Name="MKFLGap" HorizontalAlignment="Right" Width="60"/>
+
+                                        </StackPanel>
+                                    </ScrollViewer>
+                                </StackPanel>
+                            </Grid>
+                        </TabItem>
+                        <TabItem Header="Клапан Легочной артерии">
+                            <StackPanel>
+                                <DockPanel>
+                                    <Label Content="Клапан ЛА"/>
+                                    <ComboBox SelectedIndex="{Binding Path=ValveIndex}" SelectedItem="{Binding SelectedValve}" x:Name="ValveComboBox" Width="{Binding ActualWidht, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type DockPanel}}}"/>
+                                </DockPanel>
+                                <ScrollViewer>
+                                    <TextBox x:Name="KLAComment" Height="100" TextWrapping="Wrap" AcceptsReturn="True"/>
+                                </ScrollViewer>
+                            </StackPanel>
+                        </TabItem>
+                    </TabControl>
+                    <StackPanel VerticalAlignment="Center" Grid.Row="0" Grid.Column="1">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Margin="5 0 5 0"  Width="150" TextWrapping="Wrap"><Run Text="Сегментарная оценка сократимости миокарда ЛЖ"/></TextBlock>
+                            <Button x:Name="PhotoButton" Width="20" Content="..."/>
+                        </StackPanel>
+                    </StackPanel>
+                    <Grid Grid.Row="1" Grid.Column="2">
+                        <EchoCardiologyDS:CustomCircle HorizontalAlignment="Center" Height="209" Margin="75,26,55,22" VerticalAlignment="Center" Width="211"/>
+                    </Grid>
+                    <StackPanel Grid.Row="3" Grid.ColumnSpan="2">
+                        <Label Margin="0 0 0 5" Content="Индексы"/>
+                        <WrapPanel  Orientation="Horizontal" >
+                            <StackPanel Margin="2 0 2 2">
+                                <Label Content="КДР/ППТ"/>
+                                <TextBox x:Name="KDR" Width="{Binding ActualWidht, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type StackPanel}}}"/>
+                            </StackPanel>
+                            <StackPanel Margin="2 0 2 2">
+                                <Label Content="ЛП/ППТ"/>
+                                <TextBox x:Name="LP" Width="{Binding ActualWidht, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type StackPanel}}}"/>
+                            </StackPanel>
+                            <StackPanel Margin="2 0 2 2">
+                                <Label Content="Ао/ППТ"/>
+                                <TextBox x:Name="AO" Width="{Binding ActualWidht, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type StackPanel}}}"/>
+                            </StackPanel>
+                            <StackPanel Margin="2 0 2 2">
+                                <Label Content="Масса ЛЖ/ППТ"/>
+                                <TextBox x:Name="MassaLJ" Width="{Binding ActualWidht, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type StackPanel}}}"/>
+                            </StackPanel>
+                            <StackPanel Margin="2 0 2 2">
+                                <Label Content="КДО/ППТ"/>
+                                <TextBox x:Name="KDO" Width="{Binding ActualWidht, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type StackPanel}}}"/>
+                            </StackPanel>
+                            <StackPanel Margin="2 0 2 2">
+                                <Label Content="КСО/ППТ"/>
+                                <TextBox x:Name="KSO" Width="{Binding ActualWidht, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type StackPanel}}}"/>
+                            </StackPanel>
+                            <StackPanel Margin="2 0 2 2">
+                                <Label Content="Объем ЛП/ППТ"/>
+                                <TextBox x:Name="VolumeLP" Width="{Binding ActualWidht, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type StackPanel}}}"/>
+                            </StackPanel>
+                            <StackPanel Margin="2 0 2 2">
+                                <Label Content="Объем ПП/ППТ"/>
+                                <TextBox x:Name="VolumePP" Width="{Binding ActualWidht, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type StackPanel}}}"/>
+                            </StackPanel>
+                            <StackPanel Margin="2 0 2 2">
+                                <Label Content="СТК/ППТ"/>
+                                <TextBox x:Name="STK" Width="{Binding ActualWidht, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type StackPanel}}}"/>
+                            </StackPanel>
+                            <StackPanel Margin="2 0 2 2">
+                                <Label Content="НА/ППТ"/>
+                                <TextBox x:Name="NA" Width="{Binding ActualWidht, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type StackPanel}}}"/>
+                            </StackPanel>
+                        </WrapPanel>
+                    </StackPanel>
+                    <StackPanel Grid.Row="2" Grid.Column="1">
+                        <DockPanel >
+                            <Label Content="ИНС"/>
+                            <TextBox x:Name="INS" DockPanel.Dock="Left" HorizontalAlignment="Center" Width="120"/>
+                            <ComboBox SelectedIndex="{Binding Path=INSIndex}" SelectedItem="{Binding SelectedINS}" x:Name="INSComboBox" HorizontalAlignment="Right" Width="170"/>
+                        </DockPanel>
+                    </StackPanel>
+                </Grid>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition  Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Label Content="Оценка локальной сократимости левого желудочка"/>
+                    <ScrollViewer VerticalScrollBarVisibility="Auto" Grid.Row="1">
+                        <TextBox TextWrapping="Wrap" AcceptsReturn="True" x:Name="CommentarySegment" Padding="3" Margin="5" Height="100"/>
+                    </ScrollViewer>
+                    <Label  Grid.Row="2" Content="Заключение"/>
+                    <ScrollViewer VerticalScrollBarVisibility="Auto" Grid.Row="3">
+                        <TextBox TextWrapping="Wrap" AcceptsReturn="True" x:Name="Conclusion" Padding="3" Margin="5" Height="100"/>
+                    </ScrollViewer>
+                    <Label Content="Рекомендации" Grid.Row="4"/>
+                    <ScrollViewer VerticalScrollBarVisibility="Auto" Grid.Row="5">
+                        <TextBox TextWrapping="Wrap" AcceptsReturn="True" x:Name="Recomendation" Padding="3" Margin="5" Height="100"/>
+                    </ScrollViewer>
+                    <Label Content="Коментарии" Grid.Row="6"/>
+                    <ScrollViewer VerticalScrollBarVisibility="Auto" Grid.Row="7">
+                        <TextBox TextWrapping="Wrap" AcceptsReturn="True" x:Name="Commentary" Padding="3" Margin="5" Height="100"/>
+                    </ScrollViewer>
+                    <Button Background="White" x:Name="CreateWordButton" Grid.Row="8" VerticalAlignment="Bottom" Padding="10" HorizontalAlignment="Right" Margin="10">
+                        <StackPanel Orientation="Horizontal">
+                            <Image  Margin="0 0 2 0" Height="20" Source="/Resources/word.png"/>
+                            <TextBlock  FontSize="15" FontWeight="Bold" FontFamily="Calibri">Просмотр</TextBlock>
+                        </StackPanel>
+                    </Button>
+                    <Button Background="White" x:Name="SavePatientButton" Grid.Row="9" VerticalAlignment="Bottom" Padding="10" HorizontalAlignment="Left" Margin="10">
+                        <StackPanel Orientation="Horizontal">
+                            <Image  Margin="0 0 2 0" Height="20" Source="/Resources/save.png"/>
+                            <TextBlock FontSize="15" FontWeight="Bold" FontFamily="Calibri">Сохранить</TextBlock>
+                        </StackPanel>
+                    </Button>
+                </Grid>
+            </StackPanel>
+        </Grid>
+    </ScrollViewer>
+</Window>

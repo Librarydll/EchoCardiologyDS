@@ -1,0 +1,57 @@
+﻿<UserControl x:Class="EchoCardiologyDS.ForthSegment"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:EchoCardiologyDS"
+             mc:Ignorable="d" Height="150" Width="200" FontSize="9" FontWeight="Bold">
+    <UserControl.Resources>
+        <Style TargetType="{x:Type Label}" x:Key="baseStyle">
+            <Setter Property="Foreground" Value="White" />
+        </Style>
+        <Style TargetType="{x:Type TextBlock}" x:Key="txtBlock">
+            <Setter Property="FontSize" Value="12" />
+        </Style>
+        <Style TargetType="{x:Type Label}" BasedOn="{StaticResource baseStyle}"/>
+        <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource txtBlock}"/>
+    </UserControl.Resources>
+    <Grid Background="White">
+
+        <Path Data="M24.5,66" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="1" Margin="24.5,66,0,0" Stretch="Fill" Stroke="Black" VerticalAlignment="Top" Width="1"/>
+        <Path Data="M28,75" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="1" Margin="28,75,0,0" Stretch="Fill" Stroke="Black" VerticalAlignment="Top" Width="1"/>
+        <Path Data="M168,21.666667" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="1" Margin="168,21.667,0,0" Stretch="Fill" Stroke="Black" VerticalAlignment="Top" Width="1"/>
+        <Path Data="M199,13.5" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="1" Margin="199,13.5,0,0" Stretch="Fill" Stroke="Black" VerticalAlignment="Top" Width="1"/>
+        <Path Data="M31.543438,0.5 C44.314793,0.5 57.05362,2.6562436 61.289021,15.124815 L61.499112,15.781672 61.26772,15.666685 C59.974404,15.043504 58.637524,14.49642 57.262883,14.031241 L56.535775,13.795177 56.255112,13.172052 C51.726891,3.5856333 42.222306,3.8329899 31.543438,3.8329904 22.007548,2.5878806 16.057351,8.6372099 10.800288,14.984937 5.5432252,21.332666 5.7595829,25.359547 4.0436391,31.332907 2.3081619,39.692696 5.3089627,46.76318 10.510343,51.65897 10.544396,51.690141 10.050287,51.049913 14.309947,53.992562 18.569607,56.93521 17.751408,55.135598 21.320861,56.827155 21.433787,57.715518 21.579545,58.593631 21.756879,59.460242 19.134203,58.668118 18.38651,59.332094&#xA;13.88885,57.08387 9.3911902,54.835646 11.639075,56.100272 6.5795027,51.603824 1.5199301,47.107375 -0.56973535,42.799152 0.71066213,31.332907 2.8818086,23.267538 3.4700974,19.494696 10.209927,11.999332 16.949759,4.5039711 20.853709,0.5 31.543438,0.5 z" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="112.672" Margin="0,4.006,0,0" Stretch="Fill" Stroke="Black" VerticalAlignment="Top" Width="139.64"/>
+        <Path Data="M7.9077415,0.50000023 L7.9321537,0.56637977 C8.5819664,2.2302096 9.9621543,3.7862093 12.774614,5.2445528 21.21199,9.6195834 28.659553,5.9312403 33.360241,2.652302 L33.405548,2.620228 38.93531,8.0843661 38.324749,8.5296786 C32.525162,12.654053 25.433067,15.079285 17.77454,15.079285 11.561562,15.079285 5.8719997,13.79065 0.95030403,11.308731 L0.5,11.075035 z" Fill="{Binding Path=Polygon10, Mode=TwoWay}" HorizontalAlignment="Left" Height="26.315" Margin="71.793,116.678,0,0" Stretch="Fill" Stroke="Black" VerticalAlignment="Top" Width="67.847"/>
+        <Path Data="M9.605936,0.50000021 L9.647087,0.51181433 C13.835475,1.6429636 22.631758,0.96170447 24.506729,5.8836138 26.09004,10.039891 24.735567,13.726113 25.257603,17.012055 L25.284843,17.154305 17.306337,28.544136 16.712368,28.199593 C8.3668441,23.226055 2.5391433,14.543415 0.59107375,2.6828577 L0.5,2.0913698 z" Fill="{Binding Path=Polygon9, Mode=TwoWay}" HorizontalAlignment="Left" Height="49.975" Margin="41.039,86.264,0,0" Stretch="Fill" Stroke="Black" VerticalAlignment="Top" Width="44.584"/>
+        <Path Data="M22.649875,0.50000021 L22.629459,0.76373312 C22.557468,1.55534 22.442165,2.3507654 22.281528,3.1487276 22.281528,14.177239 17.252674,24.031174 9.3630099,30.542439 L8.7814593,31.010819 3.2755122,25.570214 3.3715053,25.490853 C5.356071,23.649212 -0.86889313,16.068005 0.781837,13.814133 4.1542048,9.2095835 14.614639,9.2935259 14.614639,3.1487276 14.753368,2.6460726 14.869693,2.1473963 14.964351,1.6529467 L15.048603,1.177994 z" Fill="{Binding Path=Polygon11, Mode=TwoWay}" HorizontalAlignment="Left" Height="53.561" Margin="123.923,76.747,0,0" Stretch="Fill" Stroke="Black" VerticalAlignment="Top" Width="37.983"/>
+        <Path Data="M9.9460991,0.50000019 L18.154974,8.2261879 17.868658,8.5875217 C12.746835,15.2863 9.5843199,23.37724 8.2560108,26.387078 7.8262647,27.360849 7.9627255,28.039235 8.4969948,28.530553 L8.5343388,28.561647 0.93510329,29.889703 0.88426214,29.509633 C0.75807929,28.490598 0.65943611,27.449643 0.58912331,26.387078 -0.12608446,15.578788 3.5160144,6.8932678 9.6185597,0.81748027 z" Fill="{Binding Path=Polygon8, Mode=TwoWay}" HorizontalAlignment="Left" Height="50.664" Margin="40.463,38.432,0,0" Stretch="Fill" Stroke="Black" VerticalAlignment="Top" Width="32.994"/>
+        <Path Data="M3.865757,0.50000018 L4.4597778,0.79314918 C15.425564,6.3531897 23.792747,16.573066 23.676155,27.761749 L23.665375,28.215783 16.147308,28.886358 16.18602,28.470433 C16.910858,19.298282 10.161461,11.769592 0.92689513,7.5640347 L0.49999999,7.3746092 z" Fill="{Binding Path=Polygon12, Mode=TwoWay}" HorizontalAlignment="Left" Height="49.637" Margin="121.306,28.989,0,0" Stretch="Fill" Stroke="Black" VerticalAlignment="Top" Width="40.6"/>
+        <Path Data="M24.971895,0.50024909 C25.2731,0.50130624 25.574774,0.50572169 25.876859,0.51351404 31.012289,0.64597255 36.182161,1.9316674 40.937326,4.0889074 L41.05723,4.1448819 37.67346,11.056289 36.998121,10.787145 C33.493582,9.4288408 29.70487,8.5325005 25.876859,8.180566 18.986439,7.5470845 13.401215,11.393461 9.0585365,16.477961 L8.5962943,17.029728 0.49999999,9.4094994 0.61816406,9.3009207 C7.0302925,3.5638973 15.780489,0.46802065 24.971895,0.50024909 z" Fill="{Binding Path=Polygon7, Mode=TwoWay}" HorizontalAlignment="Left" Height="29.61" Margin="57.757,21.667,0,0" Stretch="Fill" Stroke="Black" VerticalAlignment="Top" Width="69.786"/>
+        <Label  Padding="0" Content="{Binding PolygonText9}" HorizontalAlignment="Left" Margin="60,98,0,0" VerticalAlignment="Top"/>
+        <Label Padding="0"  Content="{Binding PolygonText8}" HorizontalAlignment="Left" Margin="49,54,0,0" VerticalAlignment="Top"/>
+        <Label  Padding="0"  Content="{Binding PolygonText7}" HorizontalAlignment="Left" Margin="96,22,0,0" VerticalAlignment="Top"/>
+        <Label Padding="0"  Content="{Binding PolygonText12}" HorizontalAlignment="Left" Margin="140,45,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5">
+            <Label.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="53.247"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Label.RenderTransform>
+        </Label>
+        <Label Padding="0"  Content="{Binding PolygonText11}" HorizontalAlignment="Left" Margin="140,98,0,0" VerticalAlignment="Top"/>
+        <Label Padding="0" Content="{Binding PolygonText10}" HorizontalAlignment="Left" Margin="96,128,0,0" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="87,82,0,0" TextWrapping="Wrap" Text="9" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="87,82,0,0" TextWrapping="Wrap" Text="9" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="62,65,0,0" TextWrapping="Wrap" Text="8" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="93,38,0,0" TextWrapping="Wrap" Text="7" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="128,54,0,0" TextWrapping="Wrap" Text="12" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="121,79,0,0" TextWrapping="Wrap" Text="11" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="121,79,0,0" TextWrapping="Wrap" Text="11" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="66,134,0,0" TextWrapping="Wrap" Text="10" VerticalAlignment="Top"/>
+
+
+    </Grid>
+</UserControl>

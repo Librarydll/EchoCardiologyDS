@@ -1,0 +1,295 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{19BC5991-ABE7-41FF-BE16-E4A11AEA539A}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>EchoCardiologyDS</RootNamespace>
+    <AssemblyName>EchoCardiologyDS</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>mainicon_sIi_icon.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Caliburn.Micro, Version=3.2.0.0, Culture=neutral, PublicKeyToken=8e5891231f2ed21f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Caliburn.Micro.Core.3.2.0\lib\net40\Caliburn.Micro.dll</HintPath>
+    </Reference>
+    <Reference Include="Caliburn.Micro.Platform, Version=3.2.0.0, Culture=neutral, PublicKeyToken=8e5891231f2ed21f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Caliburn.Micro.3.2.0\lib\net40\Caliburn.Micro.Platform.dll</HintPath>
+    </Reference>
+    <Reference Include="Dapper, Version=1.50.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dapper.1.50.2\lib\net40\Dapper.dll</HintPath>
+    </Reference>
+    <Reference Include="Dapper.Contrib, Version=1.50.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dapper.Contrib.1.50.0\lib\net40\Dapper.Contrib.dll</HintPath>
+    </Reference>
+    <Reference Include="DapperExtensions, Version=1.6.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\DapperExtensions.1.6.3\lib\net40\DapperExtensions.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp, Version=5.5.13.1, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\iTextSharp.5.5.13.1\lib\itextsharp.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="MySql.Data, Version=6.9.12.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySql.Data.6.9.12\lib\net40\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Interactivity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Caliburn.Micro.3.2.0\lib\net40\System.Windows.Interactivity.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="Xceed.Document.NET, Version=1.5.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\DocX.1.5.0\lib\net40\Xceed.Document.NET.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Words.NET, Version=1.5.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\DocX.1.5.0\lib\net40\Xceed.Words.NET.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="Core\AgeList.cs" />
+    <Compile Include="CustomElemets\CustomCircle.xaml.cs">
+      <DependentUpon>CustomCircle.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CustomElemets\FifthSegment.xaml.cs">
+      <DependentUpon>FifthSegment.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CustomElemets\ForthSegment.xaml.cs">
+      <DependentUpon>ForthSegment.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CustomElemets\MiddleCircleSegment.xaml.cs">
+      <DependentUpon>MiddleCircleSegment.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CustomElemets\ThirdSegment.xaml.cs">
+      <DependentUpon>ThirdSegment.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CustomElemets\SixSegment.xaml.cs">
+      <DependentUpon>SixSegment.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CustomElemets\SecondSegment.xaml.cs">
+      <DependentUpon>SecondSegment.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CustomElemets\FirstSegment.xaml.cs">
+      <DependentUpon>FirstSegment.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Aorta.cs" />
+    <Compile Include="Models\AorticValve.cs" />
+    <Compile Include="Models\ConstTableName.cs" />
+    <Compile Include="Models\DBConn.cs" />
+    <Compile Include="Models\DefaultIndex.cs" />
+    <Compile Include="Models\DegreeReguliration.cs" />
+    <Compile Include="Models\ECG.cs" />
+    <Compile Include="Models\Hospital.cs" />
+    <Compile Include="Models\IndexValve.cs" />
+    <Compile Include="Models\LeftStomachFunction.cs" />
+    <Compile Include="Models\MitralValve.cs" />
+    <Compile Include="Models\MKMR.cs" />
+    <Compile Include="Models\ModelView\CommentaryMV.cs" />
+    <Compile Include="Models\ModelView\DiametrNpv.cs" />
+    <Compile Include="Models\ModelView\Dopper.cs" />
+    <Compile Include="Models\ModelView\KDOMV.cs" />
+    <Compile Include="Models\ModelView\LeftAtrium.cs" />
+    <Compile Include="Models\ModelView\LeftStomachMV.cs" />
+    <Compile Include="Models\ModelView\LightValve.cs" />
+    <Compile Include="Models\ModelView\RightAtrium.cs" />
+    <Compile Include="Models\MySqlConn.cs" />
+    <Compile Include="Models\MysqlModel\ComboBoxItemName.cs" />
+    <Compile Include="Models\MysqlModel\ComboBoxName.cs" />
+    <Compile Include="Models\MysqlModel\IMySqlRepository.cs" />
+    <Compile Include="Models\MysqlModel\ISettingRepositorycs.cs" />
+    <Compile Include="Models\MysqlModel\MysqlConntext.cs" />
+    <Compile Include="Models\NormaStorage.cs" />
+    <Compile Include="Models\Patient.cs" />
+    <Compile Include="Models\PatientAction\IPatientRepository.cs" />
+    <Compile Include="Models\PatientAction\PatientRepository.cs" />
+    <Compile Include="Models\RightStomachMain.cs" />
+    <Compile Include="Models\PatientMV.cs" />
+    <Compile Include="Models\Segment.cs" />
+    <Compile Include="Models\SegmentRepository.cs" />
+    <Compile Include="Models\TypeString.cs" />
+    <Compile Include="Models\PatienValue.cs" />
+    <Compile Include="Models\PulmonaryValve.cs" />
+    <Compile Include="Models\RightStomach.cs" />
+    <Compile Include="Models\RightStomachFunction.cs" />
+    <Compile Include="Models\RightStomachFunctionAddition.cs" />
+    <Compile Include="Models\TricuspidialValve.cs" />
+    <Compile Include="PfdImplementation\IView.cs" />
+    <Compile Include="ViewModels\ConnectViewModel.cs" />
+    <Compile Include="ViewModels\MainViewModel.cs" />
+    <Compile Include="ViewModels\PatientListViewModel.cs" />
+    <Compile Include="ViewModels\PhotoViewModel.cs" />
+    <Compile Include="ViewModels\SettingViewModel.cs" />
+    <Compile Include="ViewModels\UpdateViewModel.cs" />
+    <Compile Include="Views\ConnectView.xaml.cs">
+      <DependentUpon>ConnectView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MainView.xaml.cs">
+      <DependentUpon>MainView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PatientListView.xaml.cs">
+      <DependentUpon>PatientListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PhotoView.xaml.cs">
+      <DependentUpon>PhotoView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Bootstrapper.cs" />
+    <Compile Include="Views\SettingView.xaml.cs">
+      <DependentUpon>SettingView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UpdateView.xaml.cs">
+      <DependentUpon>UpdateView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WordImplementation\WordCreator.cs" />
+    <Page Include="CustomElemets\CustomCircle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CustomElemets\FifthSegment.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="CustomElemets\ForthSegment.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="CustomElemets\MiddleCircleSegment.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CustomElemets\ThirdSegment.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="CustomElemets\SixSegment.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="CustomElemets\SecondSegment.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="CustomElemets\FirstSegment.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="StyleDictionary.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\ConnectView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MainView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\PatientListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\PhotoView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SettingView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\UpdateView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="mainicon_sIi_icon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\AddUser.png" />
+    <Resource Include="Resources\connectdatabase.png" />
+    <Resource Include="Resources\patientsicon.png" />
+    <Resource Include="Resources\setting.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\save.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\word.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

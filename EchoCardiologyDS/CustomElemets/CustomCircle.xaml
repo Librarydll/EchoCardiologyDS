@@ -1,0 +1,64 @@
+﻿<UserControl x:Class="EchoCardiologyDS.CustomCircle"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:EchoCardiologyDS"
+             mc:Ignorable="d" Height="150" Width="200" FontSize="10" FontWeight="ExtraBold">
+    <UserControl.Resources>
+        <Style TargetType="{x:Type TextBlock}" x:Key="baseStyle">
+            <Setter Property="Foreground" Value="White" />
+        </Style>
+
+    </UserControl.Resources>
+    <Grid Margin="0,0,5,0" >
+
+        <Path Data="M72.889068,0.50000158 L75.258025,3.4414078 C111.81863,47.742647 167.14824,75.980135 229.07306,75.980135 284.11734,75.980135 333.95059,53.669038 370.02276,17.596834 L371.65744,15.882295 439.84072,84.222841 437.16525,86.873293 C383.60095,138.70615 310.35064,170.64713 229.57257,170.64713 138.69723,170.64713 57.349227,130.22183 2.8397751,66.527071 L0.5,63.72693 z" Fill="{Binding Path=Polygon5, Mode=TwoWay}" HorizontalAlignment="Left" Height="43.242" Margin="42.824,106.619,0,0" Stretch="Fill" Stroke="Black" VerticalAlignment="Top" Width="111.256"/>
+
+        <Path Data="M54.634765,0.50000158 L152.96118,0.50000158 152.89679,5.5425736 C150.98981,80.137056 121.09472,147.8385 73.229674,198.71875 L68.750091,203.36984 0.5,134.96231 2.877716,132.46842 C33.979003,98.249391 53.339568,53.167452 54.595733,3.5862748 z" Fill="{Binding Path=Polygon6, Mode=TwoWay}" HorizontalAlignment="Left" Height="51.508" Margin="137.147,76.014,0,0" Stretch="Fill" Stroke="Black" VerticalAlignment="Top" Width="38.773"/>
+
+        <Path Data="M25.703277,0.50000158 L121.4089,0.50000158 121.37106,3.4916092 C120.13803,52.160646 101.1336,96.413271 70.604491,130.00278 L68.351104,132.3663 0.50000001,64.358705 2.9330749,61.549867 C16.179535,45.49875 24.514709,25.244203 25.637848,3.0868546 z" Fill="{Binding Path=Polygon12, Mode=TwoWay}" HorizontalAlignment="Left" Height="33.569" Margin="119.54,76.014,0,0" Stretch="Fill" Stroke="Black" VerticalAlignment="Top" Width="30.8"/>
+
+        <Path Data="M0.50000001,0.50000158 L56.69316,0.50000158 56.804366,1.962587 C58.75566,21.176668 74.536452,36.302431 94.035964,37.229005 L95.600295,37.266084 95.600295,93.432222 91.17256,93.323763 C42.270446,90.922426 3.037384,51.737489 0.55955506,2.8552872 z" Fill="{Binding Path=Polygon15, Mode=TwoWay}" HorizontalAlignment="Left" Height="25.871" Margin="76.541,73.875,0,0" Stretch="Fill" Stroke="Black" VerticalAlignment="Top" Width="25.155"/>
+        <Path Data="M25.79728,0.49999999 L26.720253,1.7158546 C33.124649,9.7578812 43.021794,14.91584 54.128548,14.91584 63.783311,14.91584 72.524071,11.018324 78.851128,4.7169056 L79.365022,4.180088 103.07526,27.848591 102.50271,28.446682 C90.122682,40.776489 73.019837,48.40263 54.128548,48.40263 32.875851,48.40263 13.886645,38.750801 1.3389894,23.608238 L0.50000012,22.544945 25.802456,0.53463935 25.782284,0.51163673 z" Fill="{Binding Path=Polygon11, Mode=TwoWay}" HorizontalAlignment="Left" Height="35.145" Margin="61.786,90.052,0,0" Stretch="Fill" Stroke="Black" VerticalAlignment="Top" Width="74.436"/>
+        <Path Data="M0.5,0.5 L33.961911,0.5 33.984776,1.4007803 C34.306671,7.7252801 36.322869,13.604578 39.590321,18.597421 L39.80563,18.910261 38.868115,19.80154 14.462744,41.03149 14.081816,40.548725 C5.8741494,29.618311 0.8848818,16.15146 0.51323545,1.5417222 z" Fill="{Binding Path=Polygon10, Mode=TwoWay}" HorizontalAlignment="Left" Height="29.847" Margin="51.321,76.014,0,0" Stretch="Fill" Stroke="Black" VerticalAlignment="Top" Width="28.967"/>
+
+        <Path Data="M0.5,0.50000158 L97.827374,0.50000158 97.866429,3.5862748 C98.949315,46.328645 113.48674,85.727388 137.40173,117.70551 L138.6464,119.32895 66.164136,182.6373 62.067609,177.49304 C24.89197,129.66223 2.2170982,70.191133 0.56438494,5.5425736 z" Fill="{Binding Path=Polygon4, Mode=TwoWay}" HorizontalAlignment="Left" Height="46.271" Margin="25.519,76.014,0,0" Stretch="Fill" Stroke="Black" VerticalAlignment="Top" Width="35.156"/>
+
+        <Path Data="M36.053558,0.50000158 C55.689269,0.49997106 71.607146,16.417665 71.607146,36.053102 71.607146,55.688539 55.689269,71.606233 36.053558,71.606233 16.417877,71.606233 0.49999999,55.688539 0.49999999,36.053102 0.49999999,16.417665 16.417877,0.49997106 36.053558,0.50000158 z" Fill="{Binding Path=Polygon17, Mode=TwoWay}" HorizontalAlignment="Left" Height="18.219" Margin="91.528,66.255,0,0" Stretch="Fill" Stroke="Black" VerticalAlignment="Top" Width="18.219"/>
+        <Path Data="M14.927433,0.5 L32.700704,0.5 32.680177,1.3200454 C31.826224,18.3395 18.305157,31.982626 1.4517952,32.818709 L0.5,32.842268 0.5,13.286105 0.50829872,13.285896 C7.2229829,12.942031 12.648571,7.6619793 13.300539,0.96604917 L13.32872,0.57954788 14.897876,0.52626038 z" Fill="{Binding Path=Polygon16, Mode=TwoWay}" HorizontalAlignment="Left" Height="25.836" Margin="101,74.414,0,0" Stretch="Fill" Stroke="Black" VerticalAlignment="Top" Width="24"/>
+        <Path Data="M0.5,0.5 L1.5043925,0.52565485 C18.89425,1.4162063 32.723,15.942932 32.723,33.732718 L32.718133,33.927386 15.711177,33.927386 15.742,33.9 14.465183,33.927386 13.366253,33.927386 13.366253,33.950957 13.360959,33.951071 13.366253,33.73276 C13.366253,26.405745 7.6706286,20.422683 0.50829872,20.055894 L0.5,20.055682 z" Fill="{Binding Path=Polygon13, Mode=TwoWay}" HorizontalAlignment="Left" Height="24.757" Margin="100.228,51.331,0,0" Stretch="Fill" Stroke="Black" VerticalAlignment="Top" Width="24.688"/>
+
+        <Path Data="M95.665007,0.50000158 L95.665007,56.666597 93.974913,56.709337 C73.192534,57.762804 56.666015,74.946977 56.666015,95.991167 L56.680145,96.550157 0.51414491,96.550157 0.50000001,95.991045 C0.50000001,44.896349 40.625839,3.1736008 91.084624,0.61581579 z" Fill="{Binding Path=Polygon14, Mode=TwoWay}" HorizontalAlignment="Left" Height="24.781" Margin="76.505,51.307,0,0" Stretch="Fill" Stroke="Black" VerticalAlignment="Top" Width="24.536"/>
+
+        <Path Data="M72.545012,0.50000158 L76.103209,4.6077286 C104.01611,38.430345 120.78381,81.79175 120.78381,129.06946 L120.78308,129.12808 25.102691,129.12808 25.116821,128.56897 C25.116821,104.40665 16.547363,82.245821 2.2819214,64.960024 L0.5,62.902925 z" Fill="{Binding Path=Polygon7, Mode=TwoWay}" HorizontalAlignment="Left" Height="32.753" Margin="119.533,43.013,0,0" Stretch="Fill" Stroke="Black" VerticalAlignment="Top" Width="30.642"/>
+
+        <Path Data="M56.184669,0.50000158 L123.27807,68.226366 122.14492,69.414903 C106.00439,87.173525 96.166999,110.76407 96.166999,136.65228 L96.181128,137.2114 0.50074006,137.2114 0.50000001,137.15277 C0.50000001,86.498094 19.748626,40.339159 51.330482,5.5914017 z" Fill="{Binding Path=Polygon9, Mode=TwoWay}" HorizontalAlignment="Left" Height="34.794" Margin="51.306,41.045,0,0" Stretch="Fill" Stroke="Black" VerticalAlignment="Top" Width="31.274"/>
+
+        <Path Data="M74.138183,0.50000158 L75.502929,2.0242249 C120.65045,53.675996 147.96777,121.05275 147.96777,194.75257 L147.96063,195.31116 49.634033,195.31116 49.634765,195.25257 C49.634765,147.08881 32.552826,102.91477 4.1167907,68.458269 L0.5,64.282884 z" Fill="{Binding Path=Polygon1, Mode=TwoWay}" HorizontalAlignment="Left" Height="49.703" Margin="138.585,26.385,0,0" Stretch="Fill" Stroke="Black" VerticalAlignment="Top" Width="37.511"/>
+
+        <Path Data="M137.84645,0.50000158 C195.25508,0.50000158 246.88917,25.223795 282.68196,64.604601 L282.81901,64.762834 210.71376,127.21796 208.55641,124.95517 C190.46016,106.85883 165.4604,95.666002 137.84645,95.666002 111.95836,95.666002 88.367919,105.50345 70.609374,121.64406 L67.566482,124.5452 0.49999999,56.845995 6.2850646,51.330476 C41.032821,19.748628 87.191756,0.50000158 137.84645,0.50000158 z" Fill="{Binding Path=Polygon8, Mode=TwoWay}" HorizontalAlignment="Left" Height="32.27" Margin="65.902,26.308,0,0" Stretch="Fill" Stroke="Black" VerticalAlignment="Top" Width="71.581"/>
+
+        <Path Data="M86.656073,0.50000158 L154.6046,69.089555 149.61709,74.320772 C117.44337,109.71976 97.833998,156.74376 97.833998,208.34778 L97.834738,208.40637 0.50712931,208.40637 0.5,207.84778 C0.5,129.06522 31.715131,57.507936 82.55699,4.6603333 z" Fill="{Binding Path=Polygon3, Mode=TwoWay}" HorizontalAlignment="Left" Height="52.783" Margin="25.5,22.987,0,0" Stretch="Fill" Stroke="Black" VerticalAlignment="Top" Width="39.188"/>
+
+        <Path Data="M208.8372,0.5 C296.02623,0.5000138 374.4452,37.712183 428.80522,96.98485 L429.67301,97.954019 356.08131,161.69664 355.88758,161.47299 C319.42402,121.35415 266.82225,96.167001 208.33769,96.167001 156.73367,96.167001 109.70967,115.77637 74.310683,147.95011 L68.41075,153.57517 0.49999999,85.023721 3.8100204,81.820688 C57.136123,31.435049 129.34132,0.50001165 208.8372,0.5 z"  HorizontalAlignment="Left" Height="40.98" Fill="{Binding Path=Polygon2, Mode=TwoWay}" Margin="48.052,1,0,0" Stretch="Fill" Stroke="Black" VerticalAlignment="Top" Width="108.688"/>
+        <TextBlock Margin="97,7,82,129" RenderTransformOrigin="1.824,0.194"><Run Foreground="White" Text="{Binding PolygonText2}"/></TextBlock>
+        <TextBlock Margin="155,48,25,87" RenderTransformOrigin="1.824,0.194"><Run Foreground="White" Text="{Binding PolygonText1}"/></TextBlock>
+        <TextBlock Margin="130,55,51,79" RenderTransformOrigin="1.824,0.194">
+            <Run Foreground="White" Text="{Binding PolygonText7}"/></TextBlock>
+        <TextBlock Margin="154,89,25,46" RenderTransformOrigin="1.824,0.194"><Run Foreground="White" Text="{Binding PolygonText6}"/></TextBlock>
+        <TextBlock Margin="97,32,82,104" RenderTransformOrigin="1.824,0.194"><Run Foreground="White" Text="{Binding PolygonText8}"/></TextBlock>
+        <TextBlock Margin="57,56,123,79" RenderTransformOrigin="1.824,0.194"><Run Foreground="White" Text="{Binding PolygonText9}"/></TextBlock>
+        <TextBlock Margin="37,48,144,86" RenderTransformOrigin="1.824,0.194"><Run Foreground="White" Text="{Binding PolygonText3}"/></TextBlock>
+        <TextBlock Margin="83,57,99,79" RenderTransformOrigin="1.824,0.194"><Run Foreground="White" Text="{Binding PolygonText14}"/></TextBlock>
+        <TextBlock Margin="106,57,73,79" RenderTransformOrigin="1.824,0.194"><Run Foreground="White" Text="{Binding PolygonText13}"/></TextBlock>
+        <TextBlock Margin="95,67,87,68" RenderTransformOrigin="1.824,0.194"><Run Foreground="White" Text="{Binding PolygonText17}"/></TextBlock>
+        <TextBlock Margin="130,81,51,53" RenderTransformOrigin="1.824,0.194"><Run Foreground="White" Text="{Binding PolygonText12}"/></TextBlock>
+        <TextBlock Margin="84,79,97,56" RenderTransformOrigin="1.824,0.194"><Run Foreground="White" Text="{Binding PolygonText15}"/></TextBlock>
+        <TextBlock Margin="97,104,83,30" ><Run Foreground="White" Text="{Binding PolygonText11}"/></TextBlock>
+        <TextBlock Margin="37,90,144,44" RenderTransformOrigin="1.824,0.194"><Run Foreground="White" Text="{Binding PolygonText4}"/></TextBlock>
+        <TextBlock Margin="97,128,83,5" RenderTransformOrigin="1.824,0.194"><Run Foreground="White" Text="{Binding PolygonText5}"/></TextBlock>
+        <TextBlock Margin="105,78,76,55" RenderTransformOrigin="1.824,0.194"><Run Foreground="White" Text="{Binding PolygonText16}"/></TextBlock>
+        <TextBlock Margin="61,79,120,53" RenderTransformOrigin="1.824,0.194"><Run Foreground="White" Text="{Binding PolygonText10}"/></TextBlock>
+    </Grid>
+</UserControl>

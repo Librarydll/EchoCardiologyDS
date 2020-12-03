@@ -1,0 +1,135 @@
+﻿<Window x:Class="EchoCardiologyDS.Views.PhotoView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:EchoCardiologyDS.Views"
+        mc:Ignorable="d"
+        xmlns:cal="http://www.caliburnproject.org"
+        xmlns:EchoCardiologyDS="clr-namespace:EchoCardiologyDS" 
+        ResizeMode="NoResize"
+        Title="Сегментарная оценка сокр. миокарда ЛЖ" Height="500" Width="650">
+    <Window.Resources>
+        <Style TargetType="{x:Type ComboBox}" x:Key="ComboBoxValue">
+            <Setter Property="FontSize" Value="11"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Padding" Value="4"/>
+        </Style>
+        <Style TargetType="{x:Type ComboBox}" BasedOn="{StaticResource ComboBoxValue}"/>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid Margin="0 5 0 0" Grid.Row="0" Width="{Binding FirstSegmnetWidth}" Height="{Binding FirstSegmentHeight}">
+            <EchoCardiologyDS:FirstSegment x:Name="FirstSegmnet"/>
+            <ComboBox SelectedIndex="{Binding SelectedPolygon14}" ItemsSource="{Binding ColorComboBox}" HorizontalAlignment="Left" Margin="17,44,0,0" VerticalAlignment="Top" Width="38" Height="27"/>
+            <ComboBox SelectedIndex="{Binding SelectedPolygon8}" ItemsSource="{Binding ColorComboBox}" HorizontalAlignment="Left" Margin="62,44,0,0" VerticalAlignment="Top" Width="38" Height="27"/>
+            <ComboBox SelectedIndex="{Binding SelectedPolygon2}" ItemsSource="{Binding ColorComboBox}" HorizontalAlignment="Left" Margin="111,44,0,0" VerticalAlignment="Top" Width="38" Height="27"/>
+            <ComboBox SelectedIndex="{Binding SelectedPolygon5}" ItemsSource="{Binding ColorComboBox}" HorizontalAlignment="Left" Margin="160,103,0,0" VerticalAlignment="Top" Width="38" Height="27"/>
+            <ComboBox SelectedIndex="{Binding SelectedPolygon11}" ItemsSource="{Binding ColorComboBox}" HorizontalAlignment="Left" Margin="62,123,0,0" VerticalAlignment="Top" Width="38" Height="26"/>
+            <ComboBox SelectedIndex="{Binding SelectedPolygon16}" ItemsSource="{Binding ColorComboBox}" HorizontalAlignment="Left" Margin="7,109,0,0" VerticalAlignment="Top" Width="38" Height="27" RenderTransformOrigin="1.314,0.762"/>
+        </Grid>
+        <Grid Grid.Row="0" Grid.Column="1" Width="{Binding Width}" Height="{Binding Height}">
+            <EchoCardiologyDS:SecondSegment x:Name="SecondSegment"/>
+            <ComboBox SelectedIndex="{Binding SelectedPolygon2}" ItemsSource="{Binding ColorComboBox}" HorizontalAlignment="Left" Margin="72,54,0,0" VerticalAlignment="Top" Width="38" Height="26"/>
+            <ComboBox SelectedIndex="{Binding SelectedPolygon1}" ItemsSource="{Binding ColorComboBox}" HorizontalAlignment="Left" Margin="150,10,0,0" VerticalAlignment="Top" Width="38" Height="27"/>
+            <ComboBox SelectedIndex="{Binding SelectedPolygon6}" ItemsSource="{Binding ColorComboBox}" HorizontalAlignment="Left" Margin="120,79,0,0" VerticalAlignment="Top" Width="38" Height="27"/>
+            <ComboBox SelectedIndex="{Binding SelectedPolygon5}" ItemsSource="{Binding ColorComboBox}" HorizontalAlignment="Left" Margin="169,132,0,0" VerticalAlignment="Top" Width="38" Height="27"/>
+            <ComboBox SelectedIndex="{Binding SelectedPolygon4}" ItemsSource="{Binding ColorComboBox}" HorizontalAlignment="Left" Margin="24,132,0,0" VerticalAlignment="Top" Width="38" Height="27"/>
+            <ComboBox SelectedIndex="{Binding SelectedPolygon3}" ItemsSource="{Binding ColorComboBox}" HorizontalAlignment="Left" Margin="2,85,0,0" VerticalAlignment="Top" Width="38" Height="27"/>
+        </Grid>
+        <Grid Grid.Row="0" Grid.Column="2" Width="{Binding Width}" Height="{Binding Height}">
+            <EchoCardiologyDS:ThirdSegment x:Name="ThirdSegment" Margin="0,14,4.8,0"/>
+            <ComboBox SelectedIndex="{Binding SelectedPolygon14}" ItemsSource="{Binding ColorComboBox}" HorizontalAlignment="Left" Margin="30,14,0,0" VerticalAlignment="Top" Width="38" Height="28"/>
+            <ComboBox SelectedIndex="{Binding SelectedPolygon16}" ItemsSource="{Binding ColorComboBox}" HorizontalAlignment="Left" Margin="167,10,0,0" VerticalAlignment="Top" Width="38" Height="26"/>
+            <ComboBox SelectedIndex="{Binding SelectedPolygon12}" ItemsSource="{Binding ColorComboBox}" HorizontalAlignment="Left" Margin="172,45,0,0" VerticalAlignment="Top" Width="38" Height="27"/>
+            <ComboBox SelectedIndex="{Binding SelectedPolygon9}" ItemsSource="{Binding ColorComboBox}" HorizontalAlignment="Left" Margin="22,56,0,0" VerticalAlignment="Top" Width="38" Height="27"/>
+            <ComboBox SelectedIndex="{Binding SelectedPolygon3}" ItemsSource="{Binding ColorComboBox}" HorizontalAlignment="Left" Margin="22,95,0,0" VerticalAlignment="Top" Width="38" Height="27" RenderTransformOrigin="0.444,0.259"/>
+            <ComboBox SelectedIndex="{Binding SelectedPolygon6}" ItemsSource="{Binding ColorComboBox}" HorizontalAlignment="Left" Margin="172,88,0,0" VerticalAlignment="Top" Width="38" Height="27"/>
+
+        </Grid>
+        <Grid Grid.Row="1" Grid.Column="0" Width="{Binding Width}" Height="{Binding Height}">
+            <EchoCardiologyDS:ForthSegment x:Name="ForthSegment"/>
+            <ComboBox SelectedIndex="{Binding SelectedPolygon8}" ItemsSource="{Binding ColorComboBox}" HorizontalAlignment="Left" Margin="2,44,0,0" VerticalAlignment="Top" Width="38" Height="28"/>
+            <ComboBox SelectedIndex="{Binding SelectedPolygon7}" ItemsSource="{Binding ColorComboBox}" HorizontalAlignment="Left" Margin="44,0,0,0" VerticalAlignment="Top" Width="38" Height="28"/>
+            <ComboBox SelectedIndex="{Binding SelectedPolygon12}" ItemsSource="{Binding ColorComboBox}" HorizontalAlignment="Left" Margin="167,22,0,0" VerticalAlignment="Top" Width="38" Height="28"/>
+            <ComboBox SelectedIndex="{Binding SelectedPolygon11}" ItemsSource="{Binding ColorComboBox}" HorizontalAlignment="Left" Margin="170,100,0,0" VerticalAlignment="Top" Width="38" Height="28"/>
+            <ComboBox SelectedIndex="{Binding SelectedPolygon9}" ItemsSource="{Binding ColorComboBox}" HorizontalAlignment="Left" Margin="10,114,0,0" VerticalAlignment="Top" Width="38" Height="27" />
+            <ComboBox SelectedIndex="{Binding SelectedPolygon10}" ItemsSource="{Binding ColorComboBox}" HorizontalAlignment="Left" Margin="95,97,0,0" VerticalAlignment="Top" Width="38" Height="26" />
+
+        </Grid>
+        <Grid Grid.Row="1" Grid.Column="1" Width="{Binding Width}" Height="{Binding Height}">
+            <EchoCardiologyDS:FifthSegment x:Name="FifthSegment" Margin="5,1,-0.2,0.2"/>
+            <ComboBox SelectedIndex="{Binding SelectedPolygon15}" ItemsSource="{Binding ColorComboBox}" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="38" Height="27" RenderTransformOrigin="2.457,2.048"/>
+            <ComboBox SelectedIndex="{Binding SelectedPolygon13}" ItemsSource="{Binding ColorComboBox}" HorizontalAlignment="Left" Margin="166,10,0,0" VerticalAlignment="Top" Width="38" Height="27" RenderTransformOrigin="2.457,2.048"/>
+            <ComboBox SelectedIndex="{Binding SelectedPolygon7}" ItemsSource="{Binding ColorComboBox}" HorizontalAlignment="Left" Margin="166,50,0,0" VerticalAlignment="Top" Width="38" Height="27" RenderTransformOrigin="2.457,2.048"/>
+            <ComboBox SelectedIndex="{Binding SelectedPolygon10}" ItemsSource="{Binding ColorComboBox}" HorizontalAlignment="Left" Margin="2,50,0,0" VerticalAlignment="Top" Width="38" Height="27" RenderTransformOrigin="2.457,2.048"/>
+            <ComboBox SelectedIndex="{Binding SelectedPolygon4}" ItemsSource="{Binding ColorComboBox}" HorizontalAlignment="Left" Margin="10,90,0,0" VerticalAlignment="Top" Width="38" Height="27" RenderTransformOrigin="2.457,2.048"/>
+            <ComboBox SelectedIndex="{Binding SelectedPolygon1}" ItemsSource="{Binding ColorComboBox}" HorizontalAlignment="Left" Margin="166,90,0,0" VerticalAlignment="Top" Width="38" Height="27" RenderTransformOrigin="2.457,2.048"/>
+        </Grid>
+        <Grid Grid.Row="1" Grid.Column="2" Width="{Binding Width}" Height="{Binding Height}">
+            <EchoCardiologyDS:SixSegment x:Name="SixSegment"/>
+            <ComboBox SelectedIndex="{Binding SelectedPolygon14}" ItemsSource="{Binding ColorComboBox}" HorizontalAlignment="Left" Margin="61,43,0,0" VerticalAlignment="Top" Width="38" Height="27" RenderTransformOrigin="2.457,2.048"/>
+            <ComboBox SelectedIndex="{Binding SelectedPolygon13}" ItemsSource="{Binding ColorComboBox}" HorizontalAlignment="Left" Margin="104,43,0,0" VerticalAlignment="Top" Width="38" Height="27" RenderTransformOrigin="2.457,2.048"/>
+            <ComboBox SelectedIndex="{Binding SelectedPolygon16}" ItemsSource="{Binding ColorComboBox}" HorizontalAlignment="Left" Margin="104,75,0,0" VerticalAlignment="Top" Width="38" Height="27" RenderTransformOrigin="2.457,2.048"/>
+            <ComboBox SelectedIndex="{Binding SelectedPolygon15}" ItemsSource="{Binding ColorComboBox}" HorizontalAlignment="Left" Margin="61,75,0,0" VerticalAlignment="Top" Width="38" Height="26" RenderTransformOrigin="2.457,2.048"/>
+        </Grid>
+
+        <StackPanel Margin="5" Orientation="Vertical" Grid.Row="2"  >
+            <StackPanel Orientation="Horizontal">
+                <Rectangle  Width="15" Height="15" HorizontalAlignment="Left" Fill="Green">
+                </Rectangle>
+                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Padding="2">Номокинез</TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Rectangle  Width="15" Height="15" HorizontalAlignment="Left" Fill="YellowGreen">
+                </Rectangle>
+                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Padding="2">Гиперкинез</TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Rectangle  Width="15" Height="15" HorizontalAlignment="Left" Fill="BurlyWood">
+                </Rectangle>
+                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Padding="2">Гипокинез</TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Rectangle  Width="15" Height="15" HorizontalAlignment="Left" Fill="Blue">
+                </Rectangle>
+                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Padding="2">Дискинез</TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Rectangle  Width="15" Height="15" HorizontalAlignment="Left" Fill="Red">
+                </Rectangle>
+                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Padding="2">Акинез</TextBlock>
+            </StackPanel>
+        </StackPanel>
+        <Grid Margin="0 5 0 0" Grid.Row="2" Grid.Column="1">
+            <EchoCardiologyDS:MiddleCircleSegment x:Name="MiddleCircleSegment">
+            </EchoCardiologyDS:MiddleCircleSegment>
+            <ComboBox SelectedIndex="{Binding SelectedPolygon17}" ItemsSource="{Binding ColorComboBox}" HorizontalAlignment="Left" Margin="150,63,0,0" VerticalAlignment="Top" Width="38" Height="26" RenderTransformOrigin="2.457,2.048"/>
+        </Grid>
+        <Grid Margin="0 5 0 0" Grid.Row="2" Grid.Column="2">
+            <EchoCardiologyDS:CustomCircle x:Name="CircleSegment"/>
+        </Grid>
+        <Button 
+           x:Name="Save"
+            Margin="0 0 0 10"
+            Grid.Row="2" 
+            Grid.Column="0"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Bottom"
+            Width="151" 
+            Height="35" 
+            FontSize="19"
+            Padding="5" Click="Button_Click">Сохранить</Button>
+    </Grid>
+</Window>

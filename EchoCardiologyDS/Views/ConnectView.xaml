@@ -1,0 +1,27 @@
+﻿<Window x:Class="EchoCardiologyDS.Views.ConnectView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:EchoCardiologyDS.Views"
+        mc:Ignorable="d"
+        FontSize="15"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen"
+        Title="Подключение к базе" Height="420" Width="300" Icon="/EchoCardiologyDS;component/Resources/connectdatabase.png">
+    <Grid>
+        <StackPanel HorizontalAlignment="Center">
+            <TextBlock Padding="5" Margin="5">Путь к серверу</TextBlock>
+            <TextBox x:Name="Server" Padding="2" Width="200"></TextBox>
+            <TextBlock Padding="5" Margin="5">Порт</TextBlock>
+            <TextBox x:Name="Port" Padding="2" Width="200"></TextBox>
+            <TextBlock Padding="5" Margin="5">Логин</TextBlock>
+            <TextBox x:Name="Login" Padding="2"></TextBox>
+            <TextBlock  Padding="5" Margin="5">Имя базы</TextBlock>
+            <TextBox x:Name="DBName" Padding="2"></TextBox>
+            <TextBlock  Padding="5" Margin="5">Пароль</TextBlock>
+            <TextBox x:Name="Password" Padding="2"></TextBox>
+            <Button x:Name="Connect" Padding="5" Margin="0 15">Подключиться</Button>
+        </StackPanel>
+    </Grid>
+</Window>

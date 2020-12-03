@@ -1,0 +1,79 @@
+﻿<UserControl x:Class="EchoCardiologyDS.FirstSegment"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:EchoCardiologyDS"
+             mc:Ignorable="d" Height="150" Width="200" FontSize="9" FontWeight="Bold" >
+    <UserControl.Resources>
+        <Style TargetType="{x:Type Label}" x:Key="baseStyle">
+            <Setter Property="Foreground" Value="White" />
+        </Style>
+        <Style TargetType="{x:Type TextBlock}" x:Key="txtBlock">
+            <Setter Property="FontSize" Value="12" />
+        </Style>
+        <Style TargetType="{x:Type Label}" BasedOn="{StaticResource baseStyle}"/>
+        <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource txtBlock}"/>
+
+    </UserControl.Resources>
+    <Grid Background="White">
+
+        <Path Data="M43.166447,0.42269321 L52.667,3.8332758 C52.667,3.8332758 28.666916,13.50039 2.6668244,9.5003459 L0.50000002,9.1597926 0.50000002,1.1030628 0.83246283,1.0896844 C22.832455,3.7564113 43.166447,0.42269416 43.166447,0.42269321 z" Fill="{Binding Path=Polygon5, Mode=TwoWay}" HorizontalAlignment="Left" Height="13.257" Margin="105.04,109.757,0,0" Stretch="Fill" Stroke="Black" VerticalAlignment="Top" Width="60.138"/>
+
+        <Path Data="M24.5,66" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="1" Margin="24.5,66,0,0" Stretch="Fill" Stroke="Black" VerticalAlignment="Top" Width="1"/>
+        <Path Data="M28,75" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="1" Margin="28,75,0,0" Stretch="Fill" Stroke="Black" VerticalAlignment="Top" Width="1"/>
+        <Path Data="M168,21.666667" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="1" Margin="168,21.667,0,0" Stretch="Fill" Stroke="Black" VerticalAlignment="Top" Width="1"/>
+        <Path Data="M199,13.5" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="1" Margin="199,13.5,0,0" Stretch="Fill" Stroke="Black" VerticalAlignment="Top" Width="1"/>
+        <Path Data="M28.09708,35.560794 C28.09708,35.560794 54.083186,10.343761 80.517389,15.345758 106.95159,20.347756 119.27257,44.730586 119.27257,44.730586" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="37.234" Margin="71.359,-2.078,0,0" Stretch="Fill" Stroke="Black" VerticalAlignment="Top" Width="103.741"/>
+        <Path Data="M39.192055,39.213349 C39.192055,39.213349 56.487316,22.694375 76.166333,25.832999 95.84535,28.971623 110.04957,48.384042 110.04957,48.384042" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="28.642" Margin="83.669,6.344,0,0" Stretch="Fill" Stroke="Black" VerticalAlignment="Top" Width="80.79" RenderTransformOrigin="0.5,0.5">
+            <Path.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform AngleY="-0.106"/>
+                    <RotateTransform Angle="-0.987"/>
+                    <TranslateTransform X="0.13422911275537786" Y="0.32959884896990133"/>
+                </TransformGroup>
+            </Path.RenderTransform>
+        </Path>
+        <Path Data="M0.5,0.50000001 L2.1329079,0.6998267 C6.243,1.2139882 10.041813,1.7589191 13.166801,2.32144 29.833397,5.3215544 48.5,7.6543235 48.5,7.6543235 L46.500336,11.987562 C46.500336,11.987561 19.525887,11.301998 1.3559952,9.7411876 L0.5,9.6661735 z" Fill="{Binding Path=Polygon2, Mode=TwoWay}" HorizontalAlignment="Left" Height="14.795" Margin="102.46,26,0,0" Stretch="Fill" Stroke="Black" VerticalAlignment="Top" Width="55.162"/>
+        <Path Data="M1.9999998,0.5 C2,0.5000006 23.870846,2.0257351 41.3866,4.1238097 L41.5,4.1376871 41.5,13.314808 40.671562,13.239181 C37.7076,12.962874 35.036457,12.661123 32.833332,12.332998 17.166668,9.9996643 0.5,6.9996686 0.5,6.9996686 z" Fill="{Binding Path=Polygon8, Mode=TwoWay}" HorizontalAlignment="Left" Height="16.864" Margin="55.18,22.364,0,0" Stretch="Fill" Stroke="Black" VerticalAlignment="Top" Width="47.28"/>
+        <Path Data="M131,43.666667 C131,43.666667 120.83333,45.833001 114.16667,44.833001 107.5,43.833001 97.832672,46.166395 97.832672,54.833272 97.832672,63.500148 106.16642,61.16728 106.16642,61.16728 106.16642,61.16728 99.166352,63.501123 99.166352,71.835067 99.166352,80.169012 102.49972,80.169444 102.49972,80.169444 L136.50005,73.835293" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="44.425" Margin="150.109,32.446,0,0" Stretch="Fill" Stroke="Black" VerticalAlignment="Top" Width="44.657"/>
+        <Path Data="M102.33333,80.333333 C102.33333,80.333333 97.833669,88.500336 84.833669,90.500336 71.833669,92.500336 66.501023,91.833669 66.501023,91.833669 66.501023,91.833669 91.83387,99.50034 94.500486,105.50034 97.167102,111.50034 104.83362,112.83368 111.16683,114.16701 117.50005,115.50035 141.49902,115.16667 141.49902,115.16667" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="42.495" Margin="114.336,75.403,0,0" Stretch="Fill" Stroke="Black" VerticalAlignment="Top" Width="85.556"/>
+        <Path Data="M1.666671,0.5 C1.6666711,0.50000002 4.8655797,1.6559864 10.119034,3.2121882 13.106958,4.8304725 36.731413,-9.409984 36.47768,-4.4009347 36.561319,1.2508561 19.406967,4.8328113 28.329736,7.8080918 32.477948,8.6712667 36.902408,9.4605267 41.444374,10.071034 L42.667,10.22736 42.667,18.273781 40.380512,17.899469 C16.906307,13.980951 0.5,9.000335 0.5,9.000334 z" Fill="{Binding Path=Polygon11, Mode=TwoWay}" HorizontalAlignment="Left" Height="29.065" Margin="56.444,92.469,0,0" Stretch="Fill" Stroke="Black" VerticalAlignment="Top" Width="48.596"/>
+        <Path Data="M0.85381285,0.50000053 L14.031932,4.0310675 14.017507,4.6658446 C14.014063,4.967446 14.013989,5.2716376 14.017336,5.5784461 13.767336,44.578444 76.183998,62.078459 76.183998,62.078459 L75.683998,75.078452 C75.683998,75.078452 -3.8159314,60.32852 0.68407616,2.3284765 0.71923253,1.8753515 0.75850872,1.4267279 0.80183772,0.98255975 z" Fill="{Binding Path=Polygon16, Mode=TwoWay}" HorizontalAlignment="Left" Height="57.37" Margin="-0.141,53.049,0,0" Stretch="Fill" Stroke="Black" VerticalAlignment="Top" Width="58.209"/>
+        <Path Data="M55.264491,0.50263786 C67.387458,0.41687226 76.686279,2.4509914 76.686279,2.4509916 L73.686294,12.951045 C68.852951,12.264186 16.517216,8.8994679 13.640369,44.393395 L13.589824,45.124421 0.50000001,41.617016 0.61220445,40.743279 C5.2950748,7.0496773 34.444609,0.64992923 55.264491,0.50263786 z" Fill="{Binding Path=Polygon14, Mode=TwoWay}" HorizontalAlignment="Left" Height="34.632" Margin="0,20.893,0,0" Stretch="Fill" Stroke="Black" VerticalAlignment="Top" Width="58.59"/>
+        <Label Content="{Binding PolygonText14}" Padding="0" HorizontalAlignment="Left" Margin="22,22,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.244,1.89" Height="15" Width="14"/>
+        <Label Content="{Binding PolygonText8}" Padding="0" HorizontalAlignment="Left" Margin="73,23,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.244,1.89" Height="14" Width="12"/>
+        <Label Content="{Binding PolygonText2}" Padding="0" HorizontalAlignment="Left" Margin="107,26,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.244,1.89" Height="11" Width="15"/>
+        <Label Content="{Binding PolygonText5}" Padding="0" HorizontalAlignment="Left" Margin="120,111,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.244,1.89" Height="14" Width="13"/>
+        <Label Content="{Binding PolygonText11}" Padding="0" HorizontalAlignment="Left" Margin="71,102,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.244,1.89" Height="13" Width="14"/>
+        <Label Content="{Binding PolygonText16}" Padding="0" HorizontalAlignment="Left" Margin="11,76,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.244,1.89" Height="12" Width="14">
+            <Label.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="23.489"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Label.RenderTransform>
+        </Label>
+        <TextBlock HorizontalAlignment="Left" Margin="19,8,0,0" TextWrapping="Wrap" Text="14" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5">
+            <TextBlock.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="-8.58"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </TextBlock.RenderTransform>
+        </TextBlock>
+        <TextBlock HorizontalAlignment="Left" Margin="64,9,0,0" TextWrapping="Wrap" Text="8" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5">
+
+        </TextBlock>
+        <TextBlock HorizontalAlignment="Left" Margin="129,14,0,0" TextWrapping="Wrap" Text="2" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5"/>
+        <TextBlock HorizontalAlignment="Left" Margin="120,97,0,0" TextWrapping="Wrap" Text="5" VerticalAlignment="Top" RenderTransformOrigin="5.417,3.133"/>
+        <TextBlock HorizontalAlignment="Left" Margin="64,83,0,0" TextWrapping="Wrap" Text="11" VerticalAlignment="Top" RenderTransformOrigin="5.417,3.133"/>
+        <TextBlock HorizontalAlignment="Left" Margin="28,69,0,0" TextWrapping="Wrap" Text="16" VerticalAlignment="Top" RenderTransformOrigin="5.417,3.133"/>
+
+    </Grid>
+</UserControl>

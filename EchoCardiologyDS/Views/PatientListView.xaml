@@ -1,0 +1,41 @@
+﻿<Window x:Class="EchoCardiologyDS.Views.PatientListView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:EchoCardiologyDS.Views"
+        mc:Ignorable="d"
+        FontSize="12"
+        WindowStartupLocation="CenterScreen"
+        WindowState="Maximized"
+        Title="Список пациентов" Height="1000" Width="1000" Icon="/EchoCardiologyDS;component/Resources/patientsicon.png">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Margin="5" Orientation="Horizontal">
+            <TextBox Width="550" x:Name="SearchString" Padding="5" ></TextBox>
+            <Button Width="80" x:Name="Search" Margin="5 0 5 0" Padding="4">Найти</Button>
+            <Button Visibility="Collapsed" x:Name="OpenSelectedPatient" IsEnabled="{Binding Path=BtnEnabled}" Margin="5 0 5 0" Padding="4">Открыть в новом окне подробно</Button>
+            <Button x:Name="DeletePatient" Margin="5 0 0 0" Padding="4">Удалить</Button>
+            <Button x:Name="CreateWord" Margin="5 0 0 0" Padding="4">Создать word файл</Button>
+        </StackPanel>
+        <DataGrid SelectedItem="{Binding SelectedPatient}" IsReadOnly="True" SelectionMode="Single" x:Name="PatientList" Grid.Row="1" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding Path=Id}" Header="Id"></DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding Path=FIO}" Header="Ф.И.О пациента"></DataGridTextColumn>
+                <DataGridTemplateColumn Header="Год рождения" CellTemplate="{StaticResource DataGridBirthdayTemplate}"/>
+                <DataGridTextColumn Binding="{Binding Path=CardNumber}" Header="N ИБ/Амбулаторной карты"></DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding Path=Weigth}" Header="Масса тела"></DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding Path=Height}" Header="Рост"></DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding Path=DoctorName}" Header="Ф.И.О врача"></DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding Path=ResearchName}" Header="Oтделение(исследование)"></DataGridTextColumn>
+                <DataGridTextColumn  Binding="{Binding Path=DirectDepartment}" Header="Направляющее отделение"></DataGridTextColumn>
+                <DataGridTemplateColumn Header="Дата и время исследования" CellTemplate="{StaticResource DataGridTemplate}"/>
+                <DataGridTextColumn Binding="{Binding Path=ResearchAim}" Header="Цель исследования"></DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Window>
