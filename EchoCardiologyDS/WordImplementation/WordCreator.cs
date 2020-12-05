@@ -24,7 +24,7 @@ namespace EchoCardiologyDS.WordImplementation
 		private PatientMV _patient;
 		private string _patientName;
 		private readonly string _savePdfDocumentsPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\Отчеты";
-		private  string _pathToBinFolder = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().GetName().CodeBase);
+		private string _pathToBinFolder = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().GetName().CodeBase);
 		DocX _document;
 		IDictionary<string, TypeString> cellData = new Dictionary<string, TypeString>();
 		int paragraphSize = 10;
@@ -35,7 +35,7 @@ namespace EchoCardiologyDS.WordImplementation
 		#endregion
 		public WordCreator(PatientMV pp, DBConn conn)
 		{
-			if (pp == null|| conn == null) return;
+			if (pp == null || conn == null) return;
 			dB = conn;
 			_patient = pp;
 			_defaultIndex = new DefaultIndex
@@ -94,7 +94,7 @@ namespace EchoCardiologyDS.WordImplementation
 				CollNPV = _patient.RightStomach?.SelectedColl,
 				WidthNPV = _patient.RightStomach?.Width
 			};
-			
+
 			_patient.LeftAtrium = new LeftAtrium
 			{
 				LP = _patient.PatienValue?.LeftAtrium,
@@ -113,12 +113,12 @@ namespace EchoCardiologyDS.WordImplementation
 			date = _patient.Patient.ResearchDateTime.ToString().Replace(" ", "_").Replace(":", "_");
 			_patientName = string.IsNullOrWhiteSpace(_patient.Patient.FIO) ? date : $"{_patient.Patient.FIO}_{date}";
 			var gender = _patient.Patient.Jender == "Ж" ? Gender.Female : Gender.Male;
-			normaStorage =new NormaStorage(gender,pp.Patient.ChildAgeCode);
+			normaStorage = new NormaStorage(gender, pp.Patient.ChildAgeCode);
 			CreateFolder();
 		}
-		public void InsertData(DBConn conn,PatientMV p)
+		public void InsertData(DBConn conn, PatientMV p)
 		{
-			if (conn == null||p==null) return;
+			if (conn == null || p == null) return;
 			repository = new PatientRepository(conn);
 			repository.Initialize(p);
 		}
@@ -172,8 +172,8 @@ namespace EchoCardiologyDS.WordImplementation
 		}
 		public void WriteMainParagraphs()
 		{
-			 _document.MarginTop=25;
-			  repository = new PatientRepository(dB);
+			_document.MarginTop = 25;
+			repository = new PatientRepository(dB);
 			Hospital hospital = repository.Hospital.FirstOrDefault();
 			Image image;
 			Picture picture;
@@ -214,6 +214,7 @@ namespace EchoCardiologyDS.WordImplementation
 			mainTable.Rows[2].Cells[0].Paragraphs[0].Append("Пол").Bold().FontSize(paragraphSize);
 			mainTable.Rows[2].Cells[1].Paragraphs[0].Append(jender).FontSize(paragraphSize);
 
+
 			mainTable.Rows[3].Cells[0].Paragraphs[0].Append("Ф.И.О врача").Bold().FontSize(paragraphSize);
 			mainTable.Rows[3].Cells[1].Paragraphs[0].Append(_patient.Patient.DoctorName).FontSize(paragraphSize);
 
@@ -222,10 +223,16 @@ namespace EchoCardiologyDS.WordImplementation
 
 			mainTable.Rows[5].Cells[0].Paragraphs[0].Append("Аппарат").Bold().FontSize(paragraphSize);
 			mainTable.Rows[5].Cells[1].Paragraphs[0].Append(_patient.Patient.SelectedApparat).FontSize(paragraphSize);
+			if (_patient.Patient.ChildAgeCode != 0)
+			{
+				mainTable.RemoveRow(2);
+			}
+
+
 			_document.InsertParagraph().FontSize(9);
 			var p = _document.InsertParagraph("Эхокардиография").Bold().UnderlineStyle(UnderlineStyle.singleLine).FontSize(15).SpacingAfter(20);
 			p.Alignment = Alignment.center;
-			Table table = _document.InsertTable(2,2);
+			Table table = _document.InsertTable(2, 2);
 			table.SetColumnWidth(0, 4950); table.SetColumnWidth(1, 4950);
 			table.Rows[0].Cells[0].Paragraphs[0].Append($"ЭКГ ритм: {_patient.ECG.Rhythm} {_patient.ECG.FirstTextBox} {_patient.ECG.SecondTextBox} в мин").FontSize(cellParagraphSize).SpacingAfter(2);
 			table.Rows[1].Cells[0].Paragraphs[0].Append($"Рост: {_patient.Patient.Height} см вес: {_patient.Patient.Weigth} кг").FontSize(cellParagraphSize).SpacingAfter(2);
@@ -256,7 +263,7 @@ namespace EchoCardiologyDS.WordImplementation
 			table.SetBorder(TableBorderType.Left, new Border(BorderStyle.Tcbs_none, BorderSize.two, 0, Color.Black));
 			table.SetBorder(TableBorderType.InsideH, new Border(BorderStyle.Tcbs_none, BorderSize.two, 0, Color.Black));
 			table.SetBorder(TableBorderType.InsideV, new Border(BorderStyle.Tcbs_none, BorderSize.two, 0, Color.Black));
-		}	
+		}
 		private void WriteTable()
 		{
 			SetNull();
@@ -265,7 +272,7 @@ namespace EchoCardiologyDS.WordImplementation
 			table.Rows[0].Cells[1].Paragraphs[0].Append("Значение").FontSize(11).Bold();
 			table.Rows[0].Cells[2].Paragraphs[0].Append("Норма (см)").FontSize(11).Bold();
 			table.Rows[0].Cells[3].Paragraphs[0].Append("Индекс").FontSize(11).Bold();
-			table.Rows[0].Cells[4].Paragraphs[0].Append("Нормы \nиндексов").FontSize(11).Bold();		
+			table.Rows[0].Cells[4].Paragraphs[0].Append("Нормы \nиндексов").FontSize(11).Bold();
 			table.Rows[0].Cells[0].VerticalAlignment = Xceed.Document.NET.VerticalAlignment.Center;
 			table.Rows[0].Cells[1].VerticalAlignment = Xceed.Document.NET.VerticalAlignment.Center;
 			table.Rows[0].Cells[2].VerticalAlignment = Xceed.Document.NET.VerticalAlignment.Center;
@@ -316,7 +323,7 @@ namespace EchoCardiologyDS.WordImplementation
 
 			cellData = _patient.PatienValue.GetNotNullField("");
 			CreateAndFillTable(cellData);
-			
+
 			AddValveDefenitionValve();
 			_document.InsertParagraph().FontSize(1);
 			AddTable();
@@ -328,25 +335,25 @@ namespace EchoCardiologyDS.WordImplementation
 			int rowCount = 0;
 			if (ConstTableName.parametrs.ContainsKey(dict.FirstOrDefault().Value.TypeName))
 				rowCount = 1;
-			Table currentTable =_document.InsertTable(dict.Count+ rowCount, 5);
-			
+			Table currentTable = _document.InsertTable(dict.Count + rowCount, 5);
+
 			int i = 0;
 			foreach (var kvp in dict)
 			{
-				if (!isWrite&& ConstTableName.parametrs.ContainsKey(kvp.Value.TypeName))
+				if (!isWrite && ConstTableName.parametrs.ContainsKey(kvp.Value.TypeName))
 				{
-					WriteMainRow(i, kvp,ConstTableName.parametrs[kvp.Value.TypeName],currentTable); i += 2;
+					WriteMainRow(i, kvp, ConstTableName.parametrs[kvp.Value.TypeName], currentTable); i += 2;
 					isWrite = true;
 				}
 				else
 				{
-					WriteSecondaryRow(i, kvp,currentTable); i++;
+					WriteSecondaryRow(i, kvp, currentTable); i++;
 				}
 			}
 			tables.Add(currentTable);
 			SetTableStyle(currentTable, fill);
 		}
-		private void WriteMainRow(int i, KeyValuePair<string, TypeString> kvp, string text,Table table)
+		private void WriteMainRow(int i, KeyValuePair<string, TypeString> kvp, string text, Table table)
 		{
 
 			table.Rows[i].MergeCells(0, 4);
@@ -380,7 +387,7 @@ namespace EchoCardiologyDS.WordImplementation
 			}
 
 		}
-		private void WriteSecondaryRow(int i, KeyValuePair<string, TypeString> kvp,Table table)
+		private void WriteSecondaryRow(int i, KeyValuePair<string, TypeString> kvp, Table table)
 		{
 			table.Rows[i].Cells[0].Paragraphs[0].Append(ConstTableName.parametrs[kvp.Key]).FontSize(cellParagraphSize);
 			table.Rows[i].Cells[1].Paragraphs[0].Append(kvp.Value.Message).FontSize(cellParagraphSize);
@@ -433,7 +440,7 @@ namespace EchoCardiologyDS.WordImplementation
 			int i = 1;
 			bool isWrite = false;
 			var first = temp.FirstOrDefault().Value.TypeName;
-			string typeName = first;	
+			string typeName = first;
 
 			foreach (var kvp in temp)
 			{
@@ -487,7 +494,7 @@ namespace EchoCardiologyDS.WordImplementation
 			if (temp.Count == 0) return;
 			_document.InsertParagraph().FontSize(2);
 			var cc = temp.Select(x => x.Value.TypeName).Distinct();
-				Table tt = _document.InsertTable(cc.Count(), 5);
+			Table tt = _document.InsertTable(cc.Count(), 5);
 			i = 0;
 			SetTableStyle(tt);
 			foreach (var kvp in temp)
@@ -499,7 +506,7 @@ namespace EchoCardiologyDS.WordImplementation
 					isWrite = false;
 				}
 				switch (kvp.Value.TypeName)
-				{      
+				{
 					case nameof(DegreeReguliration):
 						dg++;
 						if (!isWrite)
@@ -511,14 +518,14 @@ namespace EchoCardiologyDS.WordImplementation
 							continue;
 						}
 						tt.Rows[i].Paragraphs[0].Append(ConstTableName.parametrs[kvp.Key]).FontSize(cellParagraphSize);
-						if(dg!=dgCount)
-						tt.Rows[i].Paragraphs[0].Append("\n");
+						if (dg != dgCount)
+							tt.Rows[i].Paragraphs[0].Append("\n");
 						break;
 					case nameof(CommentaryMV):
 						tt.Rows[i].MergeCells(0, 4);
 						tt.Rows[i].Cells[0].Paragraphs[0].Append("Комментарии:").FontSize(cellParagraphSize).Bold();
 						tt.Rows[i].Paragraphs[0].Append("\n").Append(kvp.Value.Message).FontSize(cellParagraphSize);
-						break;				
+						break;
 					default:
 						break;
 				}
@@ -578,7 +585,7 @@ namespace EchoCardiologyDS.WordImplementation
 				else
 				{
 					additionTable.Rows[0].Paragraphs[0].Append("\n");
-					additionTable.Rows[i].Cells[0].Paragraphs[0].Append(ConstTableName.parametrs[kvp.Key]+": ").FontSize(cellParagraphSize).Bold();
+					additionTable.Rows[i].Cells[0].Paragraphs[0].Append(ConstTableName.parametrs[kvp.Key] + ": ").FontSize(cellParagraphSize).Bold();
 					additionTable.Rows[i].Cells[0].Paragraphs[0].Append(kvp.Value.Message).FontSize(cellParagraphSize);
 				}
 			}
@@ -614,15 +621,16 @@ namespace EchoCardiologyDS.WordImplementation
 			imgTable.Rows[1].Cells[1].Paragraphs[0].InsertPicture(InsertImg(4, _patient.Segment?.ForthSegment));
 			imgTable.Rows[1].Cells[0].Paragraphs[0].InsertPicture(InsertImg(2, _patient.Segment?.SecondSegment));
 
-			imgTable.Rows[1].Cells[3].Paragraphs[0].InsertPicture(InsertImg(8, _patient.Segment?.CirlceSegment,150, 110));
+			imgTable.Rows[1].Cells[3].Paragraphs[0].InsertPicture(InsertImg(8, _patient.Segment?.CirlceSegment, 150, 110));
 			ClearBorder(imgTable);
-			if (!string.IsNullOrWhiteSpace(_patient.Patient.CommentarySegment)) {
+			if (!string.IsNullOrWhiteSpace(_patient.Patient.CommentarySegment))
+			{
 				_document.InsertParagraph().FontSize(9);
 				_document.InsertParagraph("Комментарии").Bold().FontSize(paragraphSize).SpacingAfter(2).Append("\n").
 				Append(_patient.Patient.CommentarySegment).SpacingAfter(1).FontSize(paragraphSize);
 				_document.InsertParagraph().FontSize(9);
 			}
-	
+
 			p1.Alignment = Alignment.center;
 			Paragraph p2 = _document.InsertParagraph();
 			var path = _pathToBinFolder + @"\Color.png";
@@ -630,13 +638,13 @@ namespace EchoCardiologyDS.WordImplementation
 			{
 				Image image;
 				image = _document.AddImage(path.Substring(6));
-				Picture picture = image.CreatePicture(42,170);
+				Picture picture = image.CreatePicture(42, 170);
 				p2.AppendPicture(picture);
 			}
 			_document.InsertParagraph().FontSize(11);
 
 		}
-		private Picture InsertImg(int i,byte[]bytes,int width=150,int height=100)
+		private Picture InsertImg(int i, byte[] bytes, int width = 150, int height = 100)
 		{
 			Image image;
 			Picture picture;
@@ -712,7 +720,7 @@ namespace EchoCardiologyDS.WordImplementation
 				_patient.LeftStomachFunction.MaxGradientMitralValve = null;
 			}
 
-			if(_patient.RightStomachMain!=null)
+			if (_patient.RightStomachMain != null)
 				_patient.RightStomachMain.SelectedRightStomach = null;
 
 			if (_patient.ECG != null)
@@ -732,7 +740,7 @@ namespace EchoCardiologyDS.WordImplementation
 				_patient.Patient.Commentary = null;
 
 		}
-		private void SetTableStyle(Table table,bool fill=false)
+		private void SetTableStyle(Table table, bool fill = false)
 		{
 			int skipCount = 1;
 			table.SetColumnWidth(0, 4200); table.SetColumnWidth(1, 1600);

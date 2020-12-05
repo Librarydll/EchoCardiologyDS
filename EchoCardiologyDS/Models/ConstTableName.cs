@@ -235,9 +235,9 @@ namespace EchoCardiologyDS.Models
 				}
 				if (double.TryParse(splitedNorma[0].Replace(".", ",").GetStringDigit(), out double f)&&double.TryParse(splitedNorma[1].Replace(".", ",").GetStringDigit(), out double s))
 				{
-					if (val > s || val < f) return true;
+					if (val > f && val < s) return false;
 				}
-				return false;
+				return true;
 			}
 			else
 			{

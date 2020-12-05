@@ -132,36 +132,13 @@ namespace EchoCardiologyDS.Models
 			["ThicknessMejPereMJP"] = "0,3-0,4",
 			["ThicknessLowerWallLeftStomach"] = "0,3-0,4",
 
-			["PickELS"] = "60-130 см/cек",
-			["PickALS"] = "45-73 см/cек",
-			["EALS"] = "0,9-1,4 cм/сек",
-			["ESLS"] = ">7 cм/сек",
-			["ElLS"] = ">10 см/cек",
-			["EELS"] = "<14",
-			["ELRSF"] = ">10 см/cек",
-			["EARSF"] = "0,9-1,4 cм/сек",
-			["PickARSF"] = "25-41 cм/сек",
-			["PickERSF"] = "30-70 cм/сек",
+
 			//Левое предсердие передне задний размер
 			["LP"] = "1,1-1,3",
-			["Volume"] = "18-58",
-			["WeightMokardLj"] = "88-224г",
+
 			//Правый желудочек Передне задний размер
 			["RightStomachComment"] = "1,1-1,3",
-			["CollNPV"] = ">50%",
-			["MaxGradientTricuspidilLV"] = "<31 мм рт. ст.",
-			["PressurePPLV"] = "<=5 мм рт. ст.",
-			["SistolPressureLALV"] = "<36 мм рт. ст.",
-			["ThicknessMJPSislotu"] = "0,6-1,1",
-			["RelativeThicknessLeftStomach"] = "<=0,42",
-			["FVRSF"] = ">=52%",
-			["OpenAorthValve"] = "1,6-2,6",
-			["Sinus"] = "2,4-4,0",
-			["MaxGradientTricuspidilRS"] = "<31 мм рт. ст.",
-			["Arise"] = "2,5-3,8",
-			["PressurePPRS"] = "<=5 мм рт. ст.",
-			["SistolPressureLARS"] = "<36 мм рт. ст.",
-			["SelectedCollRS"] = ">50%"
+			
 
 		};
 		/// <summary>
@@ -180,34 +157,11 @@ namespace EchoCardiologyDS.Models
 			["ThicknessMejPereMJP"] = "0,2-0,8",
 			["ThicknessLowerWallLeftStomach"] = "0,3-0,7",
 
-			["PickELS"] = "60-130 см/cек",
-			["PickALS"] = "45-73 см/cек",
-			["EALS"] = "0,9-1,4 cм/сек",
-			["ESLS"] = ">7 cм/сек",
-			["ElLS"] = ">10 см/cек",
-			["EELS"] = "<14",
-			["ELRSF"] = ">10 см/cек",
-			["EARSF"] = "0,9-1,4 cм/сек",
-			["PickARSF"] = "25-41 cм/сек",
-			["PickERSF"] = "30-70 cм/сек",
+
 			["LP"] = "1,07-2,27",
-			["Volume"] = "18-58",
-			["LastVolumeLJ"] = "67-155",
-			["WeightMokardLj"] = "88-224г",
+
 			["RightStomachComment"] = "1,1-2,2",
-			["CollNPV"] = ">50%",
-			["MaxGradientTricuspidilLV"] = "<31 мм рт. ст.",
-			["PressurePPLV"] = "<=5 мм рт. ст.",
-			["SistolPressureLALV"] = "<36 мм рт. ст.",
-			["ThicknessMJPSislotu"] = "0,6-1,1",
-			["RelativeThicknessLeftStomach"] = "<=0,42",
-			["LastVolumeLJRSF"] = "67-155",
-			["FVRSF"] = ">=52%",
-			["OpenAorthValve"] = "1,6-2,6",
-			["MaxGradientTricuspidilRS"] = "<31 мм рт. ст.",
-			["PressurePPRS"] = "<=5 мм рт. ст.",
-			["SistolPressureLARS"] = "<36 мм рт. ст.",
-			["SelectedCollRS"] = ">50%"
+
 
 		};
 		/// <summary>
@@ -226,34 +180,9 @@ namespace EchoCardiologyDS.Models
 			["ThicknessMejPereMJP"] = "0,49-0,69",
 			["ThicknessLowerWallLeftStomach"] = "0,49-0,69",
 
-			["PickELS"] = "60-130 см/cек",
-			["PickALS"] = "45-73 см/cек",
-			["EALS"] = "0,9-1,4 cм/сек",
-			["ESLS"] = ">7 cм/сек",
-			["ElLS"] = ">10 см/cек",
-			["EELS"] = "<14",
-			["ELRSF"] = ">10 см/cек",
-			["EARSF"] = "0,9-1,4 cм/сек",
-			["PickARSF"] = "25-41 cм/сек",
-			["PickERSF"] = "30-70 cм/сек",
 			["LP"] = "1,95-2,75",
-			["Volume"] = "18-58",
-			["LastVolumeLJ"] = "67-155",
-			["WeightMokardLj"] = "88-224г",
 			["RightStomachComment"] = "1,3-2,6",
-			["CollNPV"] = ">50%",
-			["MaxGradientTricuspidilLV"] = "<31 мм рт. ст.",
-			["PressurePPLV"] = "<=5 мм рт. ст.",
-			["SistolPressureLALV"] = "<36 мм рт. ст.",
-			["ThicknessMJPSislotu"] = "0,6-1,1",
-			["RelativeThicknessLeftStomach"] = "<=0,42",
-			["LastVolumeLJRSF"] = "67-155",
-			["FVRSF"] = ">=52%",
-			["OpenAorthValve"] = "1,6-2,6",
-			["MaxGradientTricuspidilRS"] = "<31 мм рт. ст.",
-			["PressurePPRS"] = "<=5 мм рт. ст.",
-			["SistolPressureLARS"] = "<36 мм рт. ст.",
-			["SelectedCollRS"] = ">50%"
+			
 
 		};
 		/// <summary>
@@ -271,34 +200,9 @@ namespace EchoCardiologyDS.Models
 			["ThicknessMejPereMJP"] = "0,5-0,9",
 			["ThicknessLowerWallLeftStomach"] = "0,5-0,9",
 
-			["PickELS"] = "60-130 см/cек",
-			["PickALS"] = "45-73 см/cек",
-			["EALS"] = "0,9-1,4 cм/сек",
-			["ESLS"] = ">7 cм/сек",
-			["ElLS"] = ">10 см/cек",
-			["EELS"] = "<14",
-			["ELRSF"] = ">10 см/cек",
-			["EARSF"] = "0,9-1,4 cм/сек",
-			["PickARSF"] = "25-41 cм/сек",
-			["PickERSF"] = "30-70 cм/сек",
 			["LP"] = "2,4-3,2",
-			["Volume"] = "18-58",
-			["LastVolumeLJ"] = "67-155",
-			["WeightMokardLj"] = "88-224г",
 			["RightStomachComment"] = "1,5-3,0",
-			["CollNPV"] = ">50%",
-			["MaxGradientTricuspidilLV"] = "<31 мм рт. ст.",
-			["PressurePPLV"] = "<=5 мм рт. ст.",
-			["SistolPressureLALV"] = "<36 мм рт. ст.",
-			["ThicknessMJPSislotu"] = "0,6-1,1",
-			["RelativeThicknessLeftStomach"] = "<=0,42",
-			["LastVolumeLJRSF"] = "67-155",
-			["FVRSF"] = ">=52%",
-			["OpenAorthValve"] = "1,6-2,6",
-			["MaxGradientTricuspidilRS"] = "<31 мм рт. ст.",
-			["PressurePPRS"] = "<=5 мм рт. ст.",
-			["SistolPressureLARS"] = "<36 мм рт. ст.",
-			["SelectedCollRS"] = ">50%"
+			
 
 		};
 
@@ -313,7 +217,7 @@ namespace EchoCardiologyDS.Models
 
 		private void Initialize()
 		{
-			if (_childAgeCode!=0)
+			if (_childAgeCode>0)
 			{
 				switch (_childAgeCode)
 				{
@@ -332,7 +236,7 @@ namespace EchoCardiologyDS.Models
 						Norma = normaChild4;
 						break;
 				}
-				NormaIndex = normaIndexMale;
+				NormaIndex = new Dictionary<string,string>();
 			}
 			else
 			{
