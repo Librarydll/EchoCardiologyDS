@@ -13,7 +13,6 @@ using System.Windows.Media;
 using System.Windows;
 using System.Reflection;
 using System.IO;
-using EchoCardiologyDS.Core;
 
 namespace EchoCardiologyDS.ViewModels
 {
@@ -159,14 +158,6 @@ namespace EchoCardiologyDS.ViewModels
 		{
 			get { return _collComboBox; }
 			set { _collComboBox = value; NotifyOfPropertyChange(() => CollComboBox); }
-		}
-
-		private IEnumerable<AgeList> _ageComboBox;
-
-		public IEnumerable<AgeList> AgeComboBox
-		{
-			get { return _ageComboBox; }
-			set { _ageComboBox = value; NotifyOfPropertyChange(() => AgeComboBox); }
 		}
 		#endregion
 		#region ComboBoxeSelectedIndex
@@ -382,7 +373,6 @@ namespace EchoCardiologyDS.ViewModels
 			string date = Now.ToString().Replace(" ", "_").Replace(":", "_");
 			ConstTableName.filePath = date;
 			new Task(() => ClearFolder()).Start();
-			AgeComboBox = AgeList.GetAgeList().ToList();
 		}
 		public string FIOtb { get; set; }
 		public bool JenderMRb { get; set; }
@@ -1147,8 +1137,6 @@ namespace EchoCardiologyDS.ViewModels
 		public string SelectedAK { get; set; }
 		public string SelectedTK { get; set; }
 		public string SelectedLK { get; set; }
-
-		public AgeList SelectedChildAge { get; set; }
 		#endregion
 
 		//Open setting window
@@ -1385,8 +1373,7 @@ namespace EchoCardiologyDS.ViewModels
 					SelectedQualityVizuality = SelectedVisualizationQuality,
 					Recomendation = Recomendation,
 					Commentary = Commentary,
-					CommentarySegment =CommentarySegment,
-					ChildAgeCode = SelectedChildAge != null ? SelectedChildAge.Code : -1
+					CommentarySegment =CommentarySegment
 				},
 				RightStomachMain = new RightStomachMain
 				{

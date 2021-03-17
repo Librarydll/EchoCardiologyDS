@@ -5,7 +5,7 @@ using System.Text;
 
 namespace EchoCardiologyDS.Models
 {
-	public class NormaStorage
+   public 	class NormaStorage
 	{
 		public IDictionary<string, string> Norma = null;
 		public IDictionary<string, string> NormaIndex = null;
@@ -119,142 +119,29 @@ namespace EchoCardiologyDS.Models
 			["MitralValve"] = "60-130",
 
 		};
-		/// <summary>
-		/// 1 месячный ребенок
-		/// </summary>
-		public static IDictionary<string, string> normaChild1 = new Dictionary<string, string>
-		{
-
-			["Circle"] = "0,9-1,0",
-			["LastDiastolSizeLeftStomach"] = "1,8-2,3",
-			["LastSislotSizeLeftStomach"] = "1,2-1,9",
-			["LastVolumeLJ"] = "12 мл",
-			["ThicknessMejPereMJP"] = "0,3-0,4",
-			["ThicknessLowerWallLeftStomach"] = "0,3-0,4",
-
-
-			//Левое предсердие передне задний размер
-			["LP"] = "1,1-1,3",
-
-			//Правый желудочек Передне задний размер
-			["RightStomachComment"] = "1,1-1,3",
-			
-
-		};
-		/// <summary>
-		/// 1-2 г ребенок
-		/// </summary>
-		public static IDictionary<string, string> normaChild2 = new Dictionary<string, string>
-		{
-
-			["Circle"] = "0,8-1,84",
-			["Arise"] = "0,96-1,56",
-			["Sinus"] = "1,04-1,84",
-			["Departament"] = "0,61-1,41",
-			["Arc"] = "0,7-1,5",
-			["LastDiastolSizeLeftStomach"] = "1,2-3,0",
-			["LastSislotSizeLeftStomach"] = "0,7-1,9",
-			["ThicknessMejPereMJP"] = "0,2-0,8",
-			["ThicknessLowerWallLeftStomach"] = "0,3-0,7",
-
-
-			["LP"] = "1,07-2,27",
-
-			["RightStomachComment"] = "1,1-2,2",
-
-
-		};
-		/// <summary>
-		/// 3-7 л ребенок
-		/// </summary>
-		public static IDictionary<string, string> normaChild3 = new Dictionary<string, string>
-		{
-
-			["Circle"] = "1,5-2,3",
-			["Arise"] = "1,36-2,2",
-			["Sinus"] = "1,58-2,44",
-			["Departament"] = "1,16-1,76",
-			["Arc"] = "1,18-1,98",
-			["LastDiastolSizeLeftStomach"] = "2,7-3,9",
-			["LastSislotSizeLeftStomach"] = "1,68-2,48",
-			["ThicknessMejPereMJP"] = "0,49-0,69",
-			["ThicknessLowerWallLeftStomach"] = "0,49-0,69",
-
-			["LP"] = "1,95-2,75",
-			["RightStomachComment"] = "1,3-2,6",
-			
-
-		};
-		/// <summary>
-		/// 8-13 л ребенок
-		/// </summary>
-		public static IDictionary<string, string> normaChild4 = new Dictionary<string, string>
-		{
-			["Circle"] = "1,9-2,7",
-			["Arise"] = "1,5-2,4",
-			["Sinus"] = "2,0-2,8",
-			["Departament"] = "1,35-1,98",
-			["Arc"] = "1,6-2,2",
-			["LastDiastolSizeLeftStomach"] = "3,4-4,8",
-			["LastSislotSizeLeftStomach"] = "2,2-3,0",
-			["ThicknessMejPereMJP"] = "0,5-0,9",
-			["ThicknessLowerWallLeftStomach"] = "0,5-0,9",
-
-			["LP"] = "2,4-3,2",
-			["RightStomachComment"] = "1,5-3,0",
-			
-
-		};
 
 		private Gender _gender;
-		private int _childAgeCode;
-		public NormaStorage(Gender gender, int childAgeCode)
+		public NormaStorage(Gender gender)
 		{
 			_gender = gender;
-			_childAgeCode = childAgeCode;
 			Initialize();
 		}
 
 		private void Initialize()
 		{
-			if (_childAgeCode>0)
+			switch (_gender)
 			{
-				switch (_childAgeCode)
-				{
-					case 1:
-						Norma = normaChild1;
+				case Gender.Male:
+					Norma = normaMale;
+					NormaIndex = normaIndexMale;
 					break;
-					case 2:
-						Norma = normaChild2;
-
-						break;
-					case 3:
-						Norma = normaChild3;
-
-						break;
-					case 4:
-						Norma = normaChild4;
-						break;
-				}
-				NormaIndex = new Dictionary<string,string>();
+				case Gender.Female:
+					Norma = normaFemale;
+					NormaIndex = normaIndexFemale;
+					break;
+				default:
+					break;
 			}
-			else
-			{
-				switch (_gender)
-				{
-					case Gender.Male:
-						Norma = normaMale;
-						NormaIndex = normaIndexMale;
-						break;
-					case Gender.Female:
-						Norma = normaFemale;
-						NormaIndex = normaIndexFemale;
-						break;
-					default:
-						break;
-				}
-			}
-
 		}
 
 	}

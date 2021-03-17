@@ -25,7 +25,6 @@ namespace EchoCardiologyDS.Models
 		public string Recomendation { get; set; }
 		public string Commentary { get; set; }
 		public string CommentarySegment { get; set; }
-		public int ChildAgeCode { get; set; }
 		public int PatientAttributeId { get; set; }
 
 		public int PatienValueId { get; set; }

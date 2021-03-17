@@ -92,7 +92,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Core\AgeList.cs" />
     <Compile Include="CustomElemets\CustomCircle.xaml.cs">
       <DependentUpon>CustomCircle.xaml</DependentUpon>
     </Compile>
@@ -119,6 +118,7 @@
     </Compile>
     <Compile Include="Models\Aorta.cs" />
     <Compile Include="Models\AorticValve.cs" />
+    <Compile Include="Models\ArthalValve.cs" />
     <Compile Include="Models\ConstTableName.cs" />
     <Compile Include="Models\DBConn.cs" />
     <Compile Include="Models\DefaultIndex.cs" />
