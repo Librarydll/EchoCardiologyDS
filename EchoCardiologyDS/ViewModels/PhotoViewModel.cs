@@ -17,6 +17,8 @@ namespace EchoCardiologyDS.ViewModels
 		private Brush akinez = Brushes.Red;
 		private Brush giper = Brushes.YellowGreen;
 
+		//private Brush nomokinez = (SolidColorBrush)(new BrushConverter().ConvertFrom("#ffaacc"));
+
 		private string H = "H";
 		private string Gi = "Гп";
 		private string G = "Г";
