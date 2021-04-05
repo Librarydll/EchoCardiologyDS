@@ -45,7 +45,7 @@ namespace EchoCardiologyDS.Models
 			{
 				try
 				{
-					var value = prop.GetValue(model, null).ToString();
+					var value = prop.GetValue(model, null)?.ToString();
                     if (prop.Name == "Id"|| prop.Name == "PatientId") continue;
 					if (!string.IsNullOrWhiteSpace(value))
 					{
@@ -71,7 +71,7 @@ namespace EchoCardiologyDS.Models
 			{
 				try
 				{
-					var value = prop.GetValue(model, null).ToString();
+					var value = prop.GetValue(model, null)?.ToString();
 					if (prop.Name == "Id" || prop.Name == "PatientId") continue;
 					if (!string.IsNullOrWhiteSpace(value))
 					{
