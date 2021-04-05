@@ -4,30 +4,33 @@ using System.Linq;
 using System.Text;
 using Brushes = System.Windows.Media.Brushes;
 using Brush = System.Windows.Media.Brush;
+using System.Windows.Media;
 
 namespace EchoCardiologyDS.Models
 {
 	public static class SegmentRepository
 	{
+		public static Brush green = (SolidColorBrush)(new BrushConverter().ConvertFrom("#66ff00"));
+
 		public static string initialText = "H";
 
-		public static Brush Polygon1 = Brushes.Green;
-		public static Brush Polygon2 = Brushes.Green;
-		public static Brush Polygon3 = Brushes.Green;
-		public static Brush Polygon4 = Brushes.Green;
-		public static Brush Polygon5 = Brushes.Green;
-		public static Brush Polygon6 = Brushes.Green;
-		public static Brush Polygon7 = Brushes.Green;
-		public static Brush Polygon8 = Brushes.Green;
-		public static Brush Polygon9 = Brushes.Green;
-		public static Brush Polygon10 = Brushes.Green;
-		public static Brush Polygon11 = Brushes.Green;
-		public static Brush Polygon12 = Brushes.Green;
-		public static Brush Polygon13 = Brushes.Green;
-		public static Brush Polygon14 = Brushes.Green;
-		public static Brush Polygon15 = Brushes.Green;
-		public static Brush Polygon16 = Brushes.Green;
-		public static Brush Polygon17 = Brushes.Green;
+		public static Brush Polygon1 = green;
+		public static Brush Polygon2 = green;
+		public static Brush Polygon3 = green;
+		public static Brush Polygon4 = green;
+		public static Brush Polygon5 = green;
+		public static Brush Polygon6 = green;
+		public static Brush Polygon7 = green;
+		public static Brush Polygon8 = green;
+		public static Brush Polygon9 = green;
+		public static Brush Polygon10 = green;
+		public static Brush Polygon11 = green;
+		public static Brush Polygon12 = green;
+		public static Brush Polygon13 = green;
+		public static Brush Polygon14 = green;
+		public static Brush Polygon15 = green;
+		public static Brush Polygon16 = green;
+		public static Brush Polygon17 = green;
 
 		public static string PolygonText1 = initialText;
 		public static string PolygonText2 = initialText;
@@ -59,7 +62,7 @@ namespace EchoCardiologyDS.Models
 				}
 				else
 				{
-					f.SetValue(segmentType, Brushes.Green);
+					f.SetValue(segmentType, green);
 				}
 			}
 		}

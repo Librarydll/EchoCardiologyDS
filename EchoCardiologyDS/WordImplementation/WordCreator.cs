@@ -25,6 +25,7 @@ namespace EchoCardiologyDS.WordImplementation
 		private string _patientName;
 		private readonly string _savePdfDocumentsPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\Отчеты";
 		private string _pathToBinFolder = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().GetName().CodeBase);
+		private string _template = "Template.docx";
 		DocX _document;
 		IDictionary<string, TypeString> cellData = new Dictionary<string, TypeString>();
 		int paragraphSize = 10;
@@ -134,6 +135,14 @@ namespace EchoCardiologyDS.WordImplementation
 
 					}
 				}
+				else if (File.Exists(_template))
+				{
+					using (_document = DocX.Load(_template))
+					{
+						WriteMainParagraphs();
+						_document.SaveAs(_savePdfDocumentsPath + $@"\{_patientName}.docx");
+					}
+				}
 				else
 				{
 					using (_document = DocX.Create(_savePdfDocumentsPath + $@"\{_patientName}.docx"))
@@ -156,10 +165,21 @@ namespace EchoCardiologyDS.WordImplementation
 			if (_patient == null) return;
 			try
 			{
-				using (_document = DocX.Create(_savePdfDocumentsPath + $@"\{_patientName}.docx"))
+				if (File.Exists(_template))
 				{
-					WriteMainParagraphs();
-					_document.Save();
+					using (_document = DocX.Load(_template))
+					{
+						WriteMainParagraphs();
+						_document.SaveAs(_savePdfDocumentsPath + $@"\{_patientName}.docx");
+					}
+				}
+				else
+				{
+					using (_document = DocX.Create(_savePdfDocumentsPath + $@"\{_patientName}.docx"))
+					{
+						WriteMainParagraphs();
+						_document.Save();
+					}
 				}
 
 				System.Diagnostics.Process.Start(_savePdfDocumentsPath + $@"\{_patientName}.docx");

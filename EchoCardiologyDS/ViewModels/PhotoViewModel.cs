@@ -10,9 +10,10 @@ using Brushes = System.Windows.Media.Brushes;
 namespace EchoCardiologyDS.ViewModels
 {
 	public class PhotoViewModel :Screen,IScreen
-    {
-		private Brush nomokinez = Brushes.Green;
-		private Brush gipokinez = Brushes.BurlyWood;
+	{
+
+		private Brush nomokinez = (SolidColorBrush)(new BrushConverter().ConvertFrom("#66ff00"));
+		private Brush gipokinez = (SolidColorBrush)(new BrushConverter().ConvertFrom("#ff6800"));
 		private Brush diokinez = Brushes.Blue;
 		private Brush akinez = Brushes.Red;
 		private Brush giper = Brushes.YellowGreen;
